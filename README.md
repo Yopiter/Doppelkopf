@@ -1,0 +1,2 @@
+# Doppelkopf
+Server und Client
