@@ -1,0 +1,27 @@
+C:\Users\Michi\AppData\Local\Temporary Projects\DoppelkopfClient\bin\Debug\DoppelkopfClient.exe
+C:\Users\Michi\AppData\Local\Temporary Projects\DoppelkopfClient\bin\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\AppData\Local\Temporary Projects\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.LogIn.resources
+C:\Users\Michi\AppData\Local\Temporary Projects\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Properties.Resources.resources
+C:\Users\Michi\AppData\Local\Temporary Projects\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csproj.GenerateResource.Cache
+C:\Users\Michi\AppData\Local\Temporary Projects\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.exe
+C:\Users\Michi\AppData\Local\Temporary Projects\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.exe
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\bin\Debug\DoppelkopfClient.exe
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\bin\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.LogIn.resources
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Properties.Resources.resources
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csproj.GenerateResource.Cache
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Main.resources
+C:\Users\Michi\Desktop\Martin\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csprojResolveAssemblyReference.cache
+D:\VS Projects\Projekte_01.06.2016\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.exe
+D:\VS Projects\Projekte_01.06.2016\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.exe
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\bin\Debug\DoppelkopfClient.exe
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\bin\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csprojResolveAssemblyReference.cache
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.LogIn.resources
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Main.resources
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Properties.Resources.resources
+C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csproj.GenerateResource.Cache
