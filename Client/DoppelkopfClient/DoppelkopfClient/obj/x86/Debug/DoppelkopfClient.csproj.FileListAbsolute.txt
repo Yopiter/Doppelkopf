@@ -36,3 +36,5 @@ C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\Doppelkopf
 C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Properties.Resources.resources
 C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.ScoreBoard.resources
 C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csproj.GenerateResource.Cache
+C:\Users\martin.schneider\Desktop\C#\Testat Informatik\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.exe
+C:\Users\martin.schneider\Desktop\C#\Testat Informatik\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.pdb

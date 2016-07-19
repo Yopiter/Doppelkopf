@@ -206,7 +206,11 @@ namespace DoppelkopfClient
         #region Threadsicher
         private void StatusAkt(String Nachricht)
         {
-            Statusleiste.BeginInvoke(new LabelDelegate(Label_change), Nachricht);
+            try
+            {
+                Statusleiste.BeginInvoke(new LabelDelegate(Label_change), Nachricht);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + " " + ex.TargetSite.ToString()); }
         }
 
         private void Label_change(String Text)
