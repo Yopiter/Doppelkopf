@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Threading;
 
 namespace DoppelkopfServer
 {
@@ -12,6 +13,7 @@ namespace DoppelkopfServer
     {
         static IPAddress IP;
         static int Port;
+        static String Spieltyp = "Normales Spiel";
         static Spieler S1;
         static Spieler S2;
         static Spieler S3;
@@ -43,22 +45,49 @@ namespace DoppelkopfServer
             ClientList.Add(S3);
             SucheSpieler(TL, ref S4);
             ClientList.Add(S4);
+            Console.WriteLine("4 Spieler beigetreten");
             StartBestätigen();
             KartenVerteilen();
             KartenGeben(ref S1, Sp1K);
             KartenGeben(ref S2, Sp2K);
             KartenGeben(ref S3, Sp3K);
             KartenGeben(ref S4, Sp4K);
+            //Spielmodus bestimmen
+            Spielmodus();
             StichList = new List<Stich>();
             Ablauf_Normal();
             broadcastErg();
             Console.ReadLine();
         }
 
+        static void Spielmodus()
+        {
+            Console.WriteLine("Spielmodus abfragen");
+            foreach (Spieler Sp in ClientList)
+            {
+                Modus_Warten(Sp);
+            }
+            Console.WriteLine("Spielmodus ausgeben");
+            foreach (Spieler Sp in ClientList)
+            {
+                Sp.SendText(Spieltyp);
+                Sp.r.ReadBoolean();
+            }
+            Console.WriteLine("Spielmodus festgelegt");
+        }
+
+        static void Modus_Warten(Spieler Sp)
+        {
+            Sp.SendText("Spielmodus");
+            Sp.r.ReadBoolean();
+            Sp.SendText(Spieltyp);
+            Spieltyp = Sp.r.ReadString();
+        }
+
         static void KartenGeben(ref Spieler Playa, List<Karte> KList)
         {
-            Playa.SendText("Karten Start");
             int i = 0;
+            Playa.SendText("Karten Start");
             foreach (Karte K in KList)
             {
                 Playa.r.ReadBoolean();
@@ -122,6 +151,7 @@ namespace DoppelkopfServer
             {
                 sp.SendText("Start");
             }
+            Console.WriteLine("Start bestätigt");
         }
 
         static void SucheSpieler(TcpListener TL, ref Spieler Playa)
@@ -170,7 +200,7 @@ namespace DoppelkopfServer
                 SpPosition = ClientList.IndexOf(CurStich.GingAn);
             }
             //ende der Stiche - Auswertung/Ergebnisse
-
+            broadcastErg();
         }
 
         static void broadcastCard(int ID, int SpielerNr)

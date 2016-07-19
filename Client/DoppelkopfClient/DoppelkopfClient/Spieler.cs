@@ -15,7 +15,7 @@ namespace DoppelkopfClient
         public int Position;
         public int KartenAnzahl;
         Button KarteBox;
-        Label Name_Label;
+        TextBox Name_Label;
 
         public Spieler(String name,int position)
         {
@@ -26,9 +26,15 @@ namespace DoppelkopfClient
             KartenAnzahl = 12;
         }
 
-        public void BoxZuweisen(Button PB)
+        public void BoxZuweisen(Button PB, TextBox NamenLabel)
         {
             KarteBox = PB;
+            Name_Label = NamenLabel;
+        }
+
+        public void NameSchreiben()
+        {
+            if (Name_Label!=null)Name_Label.Text = Name;
         }
 
         public void KarteGelegt(Karte Card)

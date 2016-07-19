@@ -24,11 +24,15 @@ namespace DoppelkopfClient
         List<Spieler> PList;
         List<Button> PB_List;
         List<Button> Boxen_letzte;
-        bool AmZug;
-        int KartenNr;
+        bool AmZug = false;
         int Karte_Stich;
         Team TeamRe = new Team("Re", 0);
         Team TeamKontra = new Team("Kontra", 1);
+        String Spielmodus;
+        Thread WarteThread;
+        public delegate void LabelDelegate(string Text);
+        public delegate void ButtonDelegate(Button BT, Image img);
+        public delegate void SichtbarDelegate(Button BT, bool sichtbar);
 
         public Main()
         {
@@ -48,17 +52,27 @@ namespace DoppelkopfClient
             DeckErstellen();
             Boxen_letzte = new List<Button>() { L_1, L_2, L_3, L_4 };
             AmZug = false;
-            KartenNr = 0;
         }
 
         private void Start()
         {
             //Autostart bei Anzeigen des Hauptfensters
-            WaitForStart();
-            WaitForCards();
-            Thread WarteThread = new Thread(WaitForInfo); //Warten auf Info
-            WarteThread.Start();
-            Statusleiste.Text = "Warte auf Spielbeginn, Wartethread gestartet";
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork+=(sender, args)=>
+            {//Asynchrones Abfragen der Werte
+                WaitForStart();
+            };
+            bw.RunWorkerCompleted += (sender, args) =>
+            {//Ausführung im GUI-Thread
+                BinaryWriter w = new BinaryWriter(HStr);
+                AnzeigeInitialisieren();
+                Statusleiste.Text = "Anzeige initialisiert";
+                w.Write(true);
+                Thread StartThread = new Thread(WaitForBegin);
+                StartThread.Start();
+            };
+            bw.RunWorkerAsync();
+            Statusleiste.Text = "Warte auf Spielbeginn, Startthread gestartet";
         }
 
         private void DeckErstellen()
@@ -76,11 +90,38 @@ namespace DoppelkopfClient
             }
         }
 
+        private void WaitForBegin()
+        {
+            BinaryReader r = new BinaryReader(HStr);
+            BinaryWriter w = new BinaryWriter(HStr);
+            String Nachricht = "";
+            StatusAkt("Warte auf Spielmodus");
+            while (Nachricht != "Spielmodus")
+            {
+                Nachricht = r.ReadString();
+                //evtl. Zwischenmeldungen, sollten nicht kommen bisher
+            }
+            w.Write(true);
+            String Spiel_bisher = r.ReadString();
+            StatusAkt("SpielmodusAlt erhalten");
+            //Zeigen eines Auswahlfeldes für die Spielmodi, beeinflusst vom bisherigen Spielmodus
+            Modus_Auswahl Auswahl = new Modus_Auswahl(Spiel_bisher);
+            Auswahl.Show();
+            w.Write(Auswahl.NeuerModus);
+            StatusAkt("Spielmodus vorgeschlagen");
+            Spielmodus = r.ReadString();
+            w.Write(true);
+            StatusAkt("finalen Spielmodus erhalten");
+            WarteThread = new Thread(WaitForInfo); //Warten auf Info nach Festlegung des Spielmodus
+            WarteThread.Start();
+            w.Write(true);
+        }
+
         private void WaitForInfo()
         {
             BinaryReader r = new BinaryReader(HStr);
             BinaryWriter w = new BinaryWriter(HStr);
-            while (verbunden)
+            while (!AmZug)
             {
                 String Nachricht = r.ReadString();
                 if (Nachricht == "gespielte Karte")
@@ -93,10 +134,27 @@ namespace DoppelkopfClient
                 }
                 if (Nachricht == "Du Du Du Du bist dran!")
                 {
-                    //Am Zug -> Ablauf unterbrechen bis Eingabe?
+                    //Am Zug -> mach was
+                    AmZug = true;
                 }
                 if (Nachricht == "Endergebnis") ErgebnisZeigen(); //Anzeige des Ergebnisses, Ende des Spiels
             }
+            WarteThread.Join();
+        }
+
+        private void KarteSpielen(int Position)
+        {
+            Int64 ID = KList[Position].ID;
+            //Karte prüfen (optional)
+
+            //Karte löschen
+            PB_List[Position].Visible = false;
+
+            //Karte schicken
+            BinaryWriter w = new BinaryWriter(HStr);
+            w.Write(ID);
+            //Wartethread wieder starten
+            WarteThread.Start();
         }
 
         private void StichWegräumen()
@@ -145,18 +203,43 @@ namespace DoppelkopfClient
             w.Write(true);
         }
 
+        #region Threadsicher
+        private void StatusAkt(String Nachricht)
+        {
+            Statusleiste.BeginInvoke(new LabelDelegate(Label_change), Nachricht);
+        }
+
+        private void Label_change(String Text)
+        {
+            Statusleiste.Text = Text;
+        }
+
+        private void BtSicht(Button BT, bool sichtbar)
+        {
+            BT.Visible = sichtbar;
+        }
+
+        private void BildÄndern(Button BT, Image img)
+        {
+            BT.Image = img;
+        }
+        #endregion
+
         private void WaitForStart()
         {
             BinaryReader r = new BinaryReader(HStr);
             BinaryWriter w = new BinaryWriter(HStr);
+            StatusAkt("Warte auf Start");
             while (verbunden)
             {
                 String Nachricht = r.ReadString();
                 if (Nachricht == "Start")
                 {
-                    return;
+                    break;
                 }
             }
+            StatusAkt("Start bestätigt, Warte auf Karten");
+            WaitForCards();
         }
 
         private void WaitForCards()
@@ -167,6 +250,7 @@ namespace DoppelkopfClient
             BinaryWriter w = new BinaryWriter(HStr);
             KList = new List<Karte>();
             while (r.ReadString() != "Karten Start") { }
+            StatusAkt("Kartenübertragung beginnt");
             for (int i = 0; i < 12; i++)
             {
                 w.Write(true);
@@ -184,7 +268,7 @@ namespace DoppelkopfClient
             }
             //relative Positionen zum Anwender zuweisen
             List<Spieler> TempSpieler = new List<Spieler>();
-            int SpielerPos;
+            int SpielerPos = 0;
             for (int i = 0; i < PList.Count; i++)
             {
                 if (PList[i].Name == CName)
@@ -192,9 +276,17 @@ namespace DoppelkopfClient
                     SpielerPos = i;
                 }
             }
-            TempSpieler.Add();
-            MessageBox.Show("Karten und Spieler erhalten");
-            w.Write(true);
+            int Pos;
+            for (int i = SpielerPos + 1; i < SpielerPos + 4; i++)
+            {
+                if (i >= PList.Count) Pos = i - 4;
+                else Pos = i;
+                TempSpieler.Add(PList[Pos]);
+            }
+            TempSpieler[0].BoxZuweisen(Stich_2, NameN1);
+            TempSpieler[1].BoxZuweisen(Stich_3, NameN2);
+            TempSpieler[2].BoxZuweisen(Stich_4, NameN3);
+            StatusAkt("Kartenübertragung abgeschlossen");
         }
 
         private void Main_Shown(object sender, EventArgs e)
@@ -223,7 +315,7 @@ namespace DoppelkopfClient
                 if (Kar.Trumpfstärke!=-1) { Trumpflist.Add(Kar); }
                 else {Farblist.Add(Kar);}
             }
-            Trumpflist.Sort((x, y) => x.Trumpfstärke.CompareTo(y.ID));
+            if (Trumpflist.Count>1) Trumpflist.Sort((x, y) => x.Trumpfstärke.CompareTo(y.ID));
             Trumpflist.AddRange(Farblist);
             KList = Trumpflist;
         }
@@ -235,11 +327,19 @@ namespace DoppelkopfClient
             for (int i = 0; i < 12; i++)
             {
                 Karte curCard = KList[i];
-                PB_List[i].Image = new Bitmap("Ress\\Karten_Template\\"+curCard.Farbwert.ToString()+"\\"+curCard.Wertzahl.ToString()+".png");
-                PB_List[i].Visible = true;
+                //Threadsicher...
+                //PB_List[i].BeginInvoke(new ButtonDelegate(BildÄndern), new object[] { PB_List[i], new Bitmap("Ress\\Karten_Template\\" + curCard.Farbwert.ToString() + "\\" + curCard.Wertzahl.ToString() + ".png") });
+                //PB_List[i].BeginInvoke(new SichtbarDelegate(BtSicht), true);
+                PB_List[i].Image=new Bitmap("Ress\\Karten_Template\\" + curCard.Farbwert.ToString() + "\\" + curCard.Wertzahl.ToString() + ".png");
+                PB_List[i].Visible=true;
             }
-
+            foreach (Spieler Sp in PList)
+            {
+                Sp.NameSchreiben();
+            }
         }
+
+        
 
         private void ErgebnisZeigen()
         {
@@ -254,8 +354,109 @@ namespace DoppelkopfClient
             }
             int PunkteRe = TeamRe.GesamtPunkte();
             int PunkteKontra = 120 - PunkteRe;
-           //Verarbeitung der Ergebnisse, Anzeige irgendwie...
-
+            //Verarbeitung der Ergebnisse, Anzeige irgendwie...
+            String[] InfoRe = { };
+            String[] InfoKontra = { };
+            ScoreBoard Erg_Anzeige = new ScoreBoard(InfoRe,InfoKontra,Spielmodus);
+            Erg_Anzeige.Show();
         }
+
+        #region Karten_Events
+        private void K1_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(0);
+            }
+        }
+
+        private void K2_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(1);
+            }
+        }
+
+        private void K3_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(2);
+            }
+        }
+
+        private void K4_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(3);
+            }
+        }
+
+        private void K5_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(4);
+            }
+        }
+
+        private void K6_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(5);
+            }
+        }
+
+        private void K7_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(6);
+            }
+        }
+
+        private void K8_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(7);
+            }
+        }
+
+        private void K9_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(8);
+            }
+        }
+
+        private void K10_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(9);
+            }
+        }
+
+        private void K11_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(10);
+            }
+        }
+
+        private void K12_Click(object sender, EventArgs e)
+        {
+            if (AmZug)
+            {
+                KarteSpielen(11);
+            }
+        }
+        #endregion
     }
 }

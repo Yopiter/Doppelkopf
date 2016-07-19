@@ -45,9 +45,9 @@
             this.Stich_4 = new System.Windows.Forms.Button();
             this.Stich_1 = new System.Windows.Forms.Button();
             this.Stich_3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.NameN2 = new System.Windows.Forms.TextBox();
+            this.NameN1 = new System.Windows.Forms.TextBox();
+            this.NameN3 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -68,6 +68,7 @@
             this.K1.TabIndex = 0;
             this.K1.UseVisualStyleBackColor = true;
             this.K1.Visible = false;
+            this.K1.Click += new System.EventHandler(this.K1_Click);
             // 
             // K8
             // 
@@ -77,6 +78,7 @@
             this.K8.TabIndex = 1;
             this.K8.UseVisualStyleBackColor = true;
             this.K8.Visible = false;
+            this.K8.Click += new System.EventHandler(this.K8_Click);
             // 
             // K11
             // 
@@ -86,6 +88,7 @@
             this.K11.TabIndex = 2;
             this.K11.UseVisualStyleBackColor = true;
             this.K11.Visible = false;
+            this.K11.Click += new System.EventHandler(this.K11_Click);
             // 
             // K9
             // 
@@ -95,6 +98,7 @@
             this.K9.TabIndex = 3;
             this.K9.UseVisualStyleBackColor = true;
             this.K9.Visible = false;
+            this.K9.Click += new System.EventHandler(this.K9_Click);
             // 
             // K12
             // 
@@ -104,6 +108,7 @@
             this.K12.TabIndex = 4;
             this.K12.UseVisualStyleBackColor = true;
             this.K12.Visible = false;
+            this.K12.Click += new System.EventHandler(this.K12_Click);
             // 
             // K10
             // 
@@ -113,6 +118,7 @@
             this.K10.TabIndex = 5;
             this.K10.UseVisualStyleBackColor = true;
             this.K10.Visible = false;
+            this.K10.Click += new System.EventHandler(this.K10_Click);
             // 
             // K7
             // 
@@ -122,6 +128,7 @@
             this.K7.TabIndex = 6;
             this.K7.UseVisualStyleBackColor = true;
             this.K7.Visible = false;
+            this.K7.Click += new System.EventHandler(this.K7_Click);
             // 
             // K6
             // 
@@ -131,6 +138,7 @@
             this.K6.TabIndex = 7;
             this.K6.UseVisualStyleBackColor = true;
             this.K6.Visible = false;
+            this.K6.Click += new System.EventHandler(this.K6_Click);
             // 
             // K5
             // 
@@ -140,6 +148,7 @@
             this.K5.TabIndex = 8;
             this.K5.UseVisualStyleBackColor = true;
             this.K5.Visible = false;
+            this.K5.Click += new System.EventHandler(this.K5_Click);
             // 
             // K4
             // 
@@ -149,6 +158,7 @@
             this.K4.TabIndex = 9;
             this.K4.UseVisualStyleBackColor = true;
             this.K4.Visible = false;
+            this.K4.Click += new System.EventHandler(this.K4_Click);
             // 
             // K3
             // 
@@ -158,6 +168,7 @@
             this.K3.TabIndex = 10;
             this.K3.UseVisualStyleBackColor = true;
             this.K3.Visible = false;
+            this.K3.Click += new System.EventHandler(this.K3_Click);
             // 
             // K2
             // 
@@ -167,6 +178,7 @@
             this.K2.TabIndex = 11;
             this.K2.UseVisualStyleBackColor = true;
             this.K2.Visible = false;
+            this.K2.Click += new System.EventHandler(this.K2_Click);
             // 
             // Statusleiste
             // 
@@ -212,35 +224,35 @@
             this.Stich_3.UseVisualStyleBackColor = true;
             this.Stich_3.Visible = false;
             // 
-            // textBox1
+            // NameN2
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(334, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(93, 20);
-            this.textBox1.TabIndex = 17;
-            this.textBox1.Text = "Next Next";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NameN2.BackColor = System.Drawing.SystemColors.Control;
+            this.NameN2.Location = new System.Drawing.Point(334, 6);
+            this.NameN2.Name = "NameN2";
+            this.NameN2.Size = new System.Drawing.Size(93, 20);
+            this.NameN2.TabIndex = 17;
+            this.NameN2.Text = "Spieler 2";
+            this.NameN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // NameN1
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(12, 134);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(93, 20);
-            this.textBox2.TabIndex = 18;
-            this.textBox2.Text = "Next";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NameN1.BackColor = System.Drawing.SystemColors.Control;
+            this.NameN1.Location = new System.Drawing.Point(12, 134);
+            this.NameN1.Name = "NameN1";
+            this.NameN1.Size = new System.Drawing.Size(93, 20);
+            this.NameN1.TabIndex = 18;
+            this.NameN1.Text = "Spieler 1";
+            this.NameN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // NameN3
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.Location = new System.Drawing.Point(679, 134);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(93, 20);
-            this.textBox3.TabIndex = 19;
-            this.textBox3.Text = "Next x3";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NameN3.BackColor = System.Drawing.SystemColors.Control;
+            this.NameN3.Location = new System.Drawing.Point(679, 134);
+            this.NameN3.Name = "NameN3";
+            this.NameN3.Size = new System.Drawing.Size(93, 20);
+            this.NameN3.TabIndex = 19;
+            this.NameN3.Text = "Spieler 3";
+            this.NameN3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 
@@ -249,6 +261,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(74, 56);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // pictureBox2
             // 
@@ -257,6 +270,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(74, 56);
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // pictureBox3
             // 
@@ -265,6 +279,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(74, 56);
             this.pictureBox3.TabIndex = 22;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // L_4
             // 
@@ -315,9 +330,9 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NameN3);
+            this.Controls.Add(this.NameN1);
+            this.Controls.Add(this.NameN2);
             this.Controls.Add(this.Stich_4);
             this.Controls.Add(this.Stich_3);
             this.Controls.Add(this.Stich_2);
@@ -365,9 +380,9 @@
         private System.Windows.Forms.Button Stich_4;
         private System.Windows.Forms.Button Stich_1;
         private System.Windows.Forms.Button Stich_3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox NameN2;
+        private System.Windows.Forms.TextBox NameN1;
+        private System.Windows.Forms.TextBox NameN3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;

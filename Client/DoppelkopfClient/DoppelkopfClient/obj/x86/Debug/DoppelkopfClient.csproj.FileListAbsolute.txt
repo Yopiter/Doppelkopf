@@ -25,3 +25,14 @@ C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfCli
 C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Main.resources
 C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Properties.Resources.resources
 C:\Users\Michi\Desktop\Projekte\Doppelkopf\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csproj.GenerateResource.Cache
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.exe
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\bin\Debug\DoppelkopfClient.exe
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\bin\Debug\DoppelkopfClient.pdb
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csprojResolveAssemblyReference.cache
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.LogIn.resources
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Main.resources
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Modus_Auswahl.resources
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.Properties.Resources.resources
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.ScoreBoard.resources
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Client\DoppelkopfClient\DoppelkopfClient\obj\x86\Debug\DoppelkopfClient.csproj.GenerateResource.Cache

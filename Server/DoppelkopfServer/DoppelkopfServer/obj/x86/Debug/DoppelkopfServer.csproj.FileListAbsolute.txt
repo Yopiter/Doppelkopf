@@ -10,3 +10,8 @@ C:\Users\Michi\Desktop\Projekte\Doppelkopf\Server\DoppelkopfServer\DoppelkopfSer
 C:\Users\Michi\Desktop\Projekte\Doppelkopf\Server\DoppelkopfServer\DoppelkopfServer\bin\Debug\DoppelkopfServer.exe
 C:\Users\Michi\Desktop\Projekte\Doppelkopf\Server\DoppelkopfServer\DoppelkopfServer\bin\Debug\DoppelkopfServer.pdb
 C:\Users\Michi\Desktop\Projekte\Doppelkopf\Server\DoppelkopfServer\DoppelkopfServer\obj\x86\Debug\DoppelkopfServer.csprojResolveAssemblyReference.cache
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\obj\x86\Debug\DoppelkopfServer.exe
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\obj\x86\Debug\DoppelkopfServer.pdb
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\bin\Debug\DoppelkopfServer.exe
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\bin\Debug\DoppelkopfServer.pdb
+C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\obj\x86\Debug\DoppelkopfServer.csprojResolveAssemblyReference.cache

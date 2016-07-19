@@ -20,12 +20,14 @@ namespace DoppelkopfClient
 
         public void AddSpieler(Spieler Playa)
         {
-            SpielerList.Add(Playa);
+            if (!SpielerList.Contains(Playa)) SpielerList.Add(Playa);
         }
 
         public int GesamtPunkte()
         {
-            return SpielerList[0].Punkte + SpielerList[1].Punkte;
+            int Punkte = 0;
+            foreach (Spieler Sp in SpielerList) Punkte += Sp.Punkte;
+            return Punkte;
         }
     }
 }
