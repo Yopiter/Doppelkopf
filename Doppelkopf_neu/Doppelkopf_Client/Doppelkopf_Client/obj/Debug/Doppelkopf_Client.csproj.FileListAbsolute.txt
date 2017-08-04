@@ -1,0 +1,10 @@
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\bin\Debug\Doppelkopf_Client.exe.config
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\bin\Debug\Doppelkopf_Client.exe
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\bin\Debug\Doppelkopf_Client.pdb
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\obj\Debug\Doppelkopf_Client.csprojResolveAssemblyReference.cache
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\obj\Debug\Doppelkopf_Client.Properties.Resources.resources
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\obj\Debug\Doppelkopf_Client.csproj.GenerateResource.Cache
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\obj\Debug\Doppelkopf_Client.exe
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\obj\Debug\Doppelkopf_Client.pdb
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\obj\Debug\Doppelkopf_Client.Main.resources
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Client\Doppelkopf_Client\obj\Debug\Doppelkopf_Client.LogIn.resources
