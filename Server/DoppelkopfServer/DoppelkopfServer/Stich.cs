@@ -11,7 +11,7 @@ namespace DoppelkopfServer
         public Spieler GingAn;
         int Punktwert;
         bool gestochen;
-        int Farbe;    //0=Shell = Trumpf
+        int StichFarbe;    //0=Shell = Trumpf
         List<Karte> KList;
         List<Spieler> SpielerList;
 
@@ -24,8 +24,8 @@ namespace DoppelkopfServer
         public void StartkarteDefinieren(Karte StK)
         {
             KList = new List<Karte>() { StK };
-            if (StK.Trumpfstärke == -1) Farbe = StK.Farbwert;
-            else Farbe = 0;     //farbwert=0 bedeutet Trumpfstich
+            if (StK.Trumpfstärke == -1) StichFarbe = StK.Farbwert;
+            else StichFarbe = 0;     //farbwert=0 bedeutet Trumpfstich
             gestochen = false;
         }
 
@@ -40,7 +40,7 @@ namespace DoppelkopfServer
         {
             foreach (Karte k in KList)
             {
-                if (k.Trumpfstärke!=-1)
+                if (k.Trumpfstärke != -1)
                 {
                     Trumpfstich();
                     WertBestimmen();
@@ -50,7 +50,7 @@ namespace DoppelkopfServer
             Karte HCard = KList[0];
             foreach (Karte k in KList)
             {
-                if (k.Farbwert == Farbe && k.Wertzahl>HCard.Wertzahl)
+                if (k.Farbwert == StichFarbe && k.Wertzahl > HCard.Wertzahl)
                 {
                     HCard = k;
                 }
@@ -65,7 +65,7 @@ namespace DoppelkopfServer
             Karte HCard = KList[0];
             foreach (Karte k in KList)
             {
-                if (k.Trumpfstärke>HCard.Trumpfstärke)
+                if (k.Trumpfstärke > HCard.Trumpfstärke)
                 {
                     HCard = k;
                 }

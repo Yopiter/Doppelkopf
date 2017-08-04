@@ -15,3 +15,5 @@ C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\Doppelkopf
 C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\bin\Debug\DoppelkopfServer.exe
 C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\bin\Debug\DoppelkopfServer.pdb
 C:\Users\Michi\Desktop\Projekte\DoppelkopfGIT\Server\DoppelkopfServer\DoppelkopfServer\obj\x86\Debug\DoppelkopfServer.csprojResolveAssemblyReference.cache
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_alt\Server\DoppelkopfServer\DoppelkopfServer\obj\x86\Debug\DoppelkopfServer.exe
+C:\Users\martin.schneider\Desktop\C#\Doppelkopf_alt\Server\DoppelkopfServer\DoppelkopfServer\obj\x86\Debug\DoppelkopfServer.pdb
