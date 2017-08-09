@@ -13,39 +13,44 @@ namespace Doppelkopf_Client
     {
         TcpClient Server;
         string PlName;
-        bool verbunden;
+
         List<Button> KartenButtons;
         List<Button> StichButtons;
         List<Button> LetzterStichButtons;
+        List<TextBox> LabelList;
+
         List<Karte> VerbleibendeKarten;
         List<Karte> Stiche;
+
         List<Spieler> SpielerListe;
-        List<TextBox> LabelList;
+        
         List<Spielmodus> ListeGewaehlterSpielmodi;
         string Status;
 
-        public enum Spielmodus { Normal, Hochzeit, StillesSolo };
 
         public Main()
         {
             InitializeComponent();
             SetupTableVariables();
+
             LogIn AuthFenster = new LogIn();
             AuthFenster.ShowDialog();
-            if (AuthFenster.Host == null) Environment.Exit(0);
+
+            if (AuthFenster.Host == null)
+                Environment.Exit(0);
             Server = AuthFenster.Host;
             PlName = AuthFenster.CName;
-            verbunden = true;
+
             ThreadPool.QueueUserWorkItem(WaitForServerCommands);
         }
 
         private void SetupTableVariables()
         {
             BackgroundImage = new Bitmap("Ress\\Background.jpg");
-            KartenButtons = new List<Button> { K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12 };
-            StichButtons = new List<Button> { Stich_1, Stich_2, Stich_3, Stich_4 };
-            LetzterStichButtons = new List<Button> { L_1, L_2, L_3, L_4 };
-            LabelList = new List<TextBox> { NameN1, NameN2, NameN3, NameN4 };
+            KartenButtons = new List<Button> { BT_K1, BT_K2, BT_K3, BT_K4, BT_K5, BT_K6, BT_K7, BT_K8, BT_K9, BT_K10, BT_K11, BT_K12 };
+            StichButtons = new List<Button> { BT_Stich_1, BT_Stich_2, BT_Stich_3, BT_Stich_4 };
+            LetzterStichButtons = new List<Button> { BT_L_1, BT_L_2, BT_L_3, BT_L_4 };
+            LabelList = new List<TextBox> { LBL_Player1, LBL_Player2, LBL_Player3, LBL_Player4 };
             SpielerListe = new List<Spieler>() { null, null, null, null };
         }
 
@@ -227,9 +232,9 @@ namespace Doppelkopf_Client
             {
                 for (int Wert = 0; Wert < 6; Wert++)
                 {
-                    Karte newCard = new Karte(Farbe, Wert, "", 0); //'Kartenname' bisher ungenutzt
+                    Karte newCard = new Karte(Farbe, Wert, 0); 
                     Deck.Add(newCard);
-                    newCard = new Karte(Farbe, Wert, "", 1);
+                    newCard = new Karte(Farbe, Wert, 1);
                     Deck.Add(newCard);
                 }
             }
@@ -246,7 +251,7 @@ namespace Doppelkopf_Client
                 case (Spielmodus.Hochzeit):
                     return " sagt eine Hochzeit";
                 default:
-                    return " sagt einen unbekannten Spielmodus an, der schon lange zu einer Fehlermeldung hätte führen sollen. Bitte führen sie wenn möglich ein Update durch!";
+                    return " sagt einen unbekannten Spielmodus an, der schon lange zu einer Fehlermeldung hätte führen sollen. Bitte versuchen sie nicht mehr das Spiel zu hacken!";
             }
         }
     }

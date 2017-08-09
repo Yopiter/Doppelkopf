@@ -24,4 +24,10 @@ namespace Doppelkopf_Client
         Ass = 5
     
     }
+
+    enum Spielmodus
+    {
+        Normal,
+        Hochzeit,
+        StillesSolo };
 }
