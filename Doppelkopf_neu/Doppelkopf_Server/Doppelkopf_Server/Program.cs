@@ -59,14 +59,17 @@ namespace Doppelkopf_Server
             List<int> Spielmodus = new List<int>();
             foreach (Spieler Playa in SpielerListe)
             {
-                Playa.SendText("Spielmodi");
+                Playa.SendText("Spielmodus_Start");
             }
             foreach (Spieler Playa in SpielerListe)
             {
-                Playa.SendBool(true);
+                Playa.SendText("Spielmodus_Abfrage");
+                Console.WriteLine("Warte auf Spielmodus von Spieler " + Playa.Name);
                 Spielmodus.Add(Playa.ReadInt64());
+                bool ReOrKontra = Playa.ReadBoolean();
                 foreach (Spieler sp in SpielerListe) //Wahl des Spielers an andere Spieler weiterleiten
                 {
+                    sp.SendText("Spielmodus_Ansage");
                     sp.SendNumber(Spielmodus[Spielmodus.Count - 1]);
                 }
             }
@@ -162,7 +165,7 @@ namespace Doppelkopf_Server
         private static void HandkartenAnSpielerSenden(List<Karte> KList, Spieler Playa)
         {
             int i = 0;
-            Playa.SendText("Karten Start");
+            Playa.SendText("Karten_Start");
             foreach (Karte K in KList)
             {
                 i++;

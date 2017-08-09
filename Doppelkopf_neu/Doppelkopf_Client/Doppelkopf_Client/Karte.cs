@@ -2,12 +2,12 @@
 
 namespace Doppelkopf_Client
 {
-    class Karte
+    public class Karte
     {
         public int ID;
         public int Farbwert;
         public int Wertzahl;
-        public int Trumpfstärke;
+        public int Trumpfstärke; //-1 -> kein Trumpf
         public int Punktzahl;
         String Farbe;
         String Wert;
@@ -59,6 +59,11 @@ namespace Doppelkopf_Client
         public bool IstAlte()
         {
             return Wert == "Ober" && Farbe == "Eichel";
+        }
+
+        public string GetWert()
+        {
+            return Wert;
         }
     }
 }
