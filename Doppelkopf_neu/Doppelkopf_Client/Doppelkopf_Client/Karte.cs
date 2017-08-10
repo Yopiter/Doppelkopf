@@ -4,66 +4,47 @@ namespace Doppelkopf_Client
 {
     public class Karte
     {
-        public int ID;
-        public int Farbwert;
-        public int Wertzahl;
-        public int Trumpfstärke; //-1 -> kein Trumpf
-        public int Punktzahl;
-        String Farbe;
-        String Wert;
-        String Name;
-        int Edition;
+        public int id;
+        public int trumpfstärke; //-1 -> kein Trumpf
+        public int punktzahl;
+        Farben farbe;
+        Kartenwert kartenWert;
 
-        public Karte(int KFarbe, int KWert, String KName, int edition)
+        string kartenName;
+
+        public Karte(int KFarbe, int KWert, int edition)
         {
-            Farbwert = KFarbe;
-            Wertzahl = KWert;
-            Edition = edition;
-            ID = 12 * Farbwert + 2 * Wertzahl + Edition;
-            if (Farbwert == 0) Farbe = "Schellen";
-            if (Farbwert == 1) Farbe = "Herz";
-            if (Farbwert == 2) Farbe = "Blatt";
-            if (Farbwert == 3) Farbe = "Eichel";
+            id = 12 * KFarbe + 2 * KWert + edition;
 
-            if (Wertzahl == 0) Wert = "9";
-            if (Wertzahl == 1) Wert = "König";
-            if (Wertzahl == 2) Wert = "Unter";
-            if (Wertzahl == 3) Wert = "Ober";
-            if (Wertzahl == 4) Wert = "10";
-            if (Wertzahl == 5) Wert = "Ass";
+            farbe = (Farben) KFarbe;
+            kartenWert = (Kartenwert) KWert;
+            
+            //TODO spezielle Kartennamen einbauen
+            kartenName = Enum.GetName(typeof(Farben), farbe) + " " + Enum.GetName(typeof(Kartenwert), kartenWert);
 
-            Name = KName;
-            if (Name == "") Name = Farbe + " " + Wert;
-
-            Trumpfstärke = StärkeBerechnen();
-
-            Punktzahl = PunkzahlBestimmung();
+            trumpfstärke = StärkeBerechnen(KFarbe, KWert);
+            punktzahl = PunkzahlBestimmung();
         }
 
-        private int StärkeBerechnen()
+        private int StärkeBerechnen(int farbWert, int wertigkeit)
         {
-            if (!(Farbwert == 0 || ID == 14 || ID == 15 || Wertzahl == 3 || Wertzahl == 2)) return -1;
-            if (Farbwert == 0 && Wertzahl != 2 && Wertzahl != 3)
+            if (!(farbWert == 0 || id == 14 || id == 15 || wertigkeit == 3 || wertigkeit == 2)) return -1;
+            if (farbWert == 0 && wertigkeit != 2 && wertigkeit != 3)
             {
-                return Wertzahl;
+                return wertigkeit;
             }
-            return 10 * Wertzahl + Farbwert;
+            return 10 * wertigkeit + farbWert;
         }
 
         private int PunkzahlBestimmung()
         {
             int[] PunkteArray = new int[] { 0, 4, 2, 3, 10, 11 };
-            return PunkteArray[Wertzahl];
+            return PunkteArray[(int)kartenWert];
         }
 
         public bool IstAlte()
         {
-            return Wert == "Ober" && Farbe == "Eichel";
-        }
-
-        public string GetWert()
-        {
-            return Wert;
+            return farbe == Farben.Eichel && kartenWert == Kartenwert.Ober;
         }
     }
 }
