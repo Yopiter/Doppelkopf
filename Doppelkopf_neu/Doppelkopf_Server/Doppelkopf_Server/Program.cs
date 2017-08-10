@@ -68,12 +68,13 @@ namespace Doppelkopf_Server
                 Console.WriteLine("Warte auf Spielmodus von Spieler " + Playa.Name);
                 Spielmodus.Add(Playa.ReadInt64());
                 bool Re = Playa.ReadBoolean();
-                bool kontra = Playa.ReadBoolean();
+                bool Kontra = Playa.ReadBoolean();
                 foreach (Spieler sp in SpielerListe) //Wahl des Spielers an andere Spieler weiterleiten
                 {
                     sp.SendText("Spielmodus_Ansage");
                     sp.SendNumber(Spielmodus[Spielmodus.Count - 1]);
-                    //TODO: Re und Kontra an Clients schicken
+                    sp.SendBool(Re);
+                    sp.SendBool(Kontra);
                 }
             }
             //Höchsten Spielmodus und den Spielenden bestimmen
