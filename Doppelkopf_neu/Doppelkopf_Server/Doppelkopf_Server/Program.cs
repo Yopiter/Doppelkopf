@@ -39,6 +39,7 @@ namespace Doppelkopf_Server
             switch (CurrentGame.gameMode)
             {
                 case (Spiel.Spielmodus.Normal):
+
                     AblaufNormal();
                     break;
                 case (Spiel.Spielmodus.Hochzeit):
@@ -66,21 +67,23 @@ namespace Doppelkopf_Server
                 Playa.SendText("Spielmodus_Abfrage");
                 Console.WriteLine("Warte auf Spielmodus von Spieler " + Playa.Name);
                 Spielmodus.Add(Playa.ReadInt64());
-                bool ReOrKontra = Playa.ReadBoolean();
+                bool Re = Playa.ReadBoolean();
+                bool kontra = Playa.ReadBoolean();
                 foreach (Spieler sp in SpielerListe) //Wahl des Spielers an andere Spieler weiterleiten
                 {
                     sp.SendText("Spielmodus_Ansage");
                     sp.SendNumber(Spielmodus[Spielmodus.Count - 1]);
+                    //TODO: Re und Kontra an Clients schicken
                 }
             }
             //Höchsten Spielmodus und den Spielenden bestimmen
             int Modus = 0;
-            int Player = 0;
+            int Spielender = 0;
             for (int i = 0; i < 4; i++)
             {
                 if (Spielmodus[i] > Modus)
                 {
-                    Player = i;
+                    Spielender = i;
                     Modus = Spielmodus[i];
                 }
             }
@@ -114,6 +117,13 @@ namespace Doppelkopf_Server
                 default:
                     ProgrammMitFehlermeldungBeenden("Unbekannter Spielmodus. Bitte prüfen sie, ob alle Teilnehmer identische Versionen des Programms verwenden!");
                     break;
+            }
+            //Bekanntgabe des Modus und des Spielenden
+            foreach (Spieler sp in SpielerListe)
+            {
+                sp.SendText("Spielmodus_final");
+                sp.SendNumber(Modus);
+                sp.SendNumber(Spielender);
             }
         }
 
