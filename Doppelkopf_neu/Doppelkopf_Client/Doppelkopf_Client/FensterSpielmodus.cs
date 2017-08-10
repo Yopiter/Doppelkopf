@@ -28,7 +28,7 @@ namespace Doppelkopf_Client
             {
                 if (K.IstAlte()) AnzahlAlte++;
                 if (K.GetWert() == "König") AnzahlKönige++;
-                if (K.Trumpfstärke > -1) AnzahlTrumpf++;
+                if (K.trumpfstärke > -1) AnzahlTrumpf++;
             }
         }
 
