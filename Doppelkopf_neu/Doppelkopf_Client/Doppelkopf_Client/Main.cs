@@ -83,6 +83,10 @@ namespace Doppelkopf_Client
                     case ("NachrichtVomServer"):
                         Invoke((Func<BinaryReader, BinaryWriter, bool>)NachrichtHolenUndZeigen, r, w);
                         break;
+                    case ("Spielmodus_final"):
+                        //TODO: Lesen des finalen Spielmoduses und Anzeige. Spielender ist nur für die Hochzeit interessant, dann muss das Hochzeitssymbol aus dem Ordner Ress/Icons angezeigt werden.
+                        //Festlegen des aktuellen spielmoduses als globale Variable
+                        break;
                     default:
                         MessageBox.Show("Unbekannter Befehl: " + Nachricht);
                         break;
@@ -95,6 +99,7 @@ namespace Doppelkopf_Client
             w.Write(true);
             int SpielInt=ReadInt64(r, w);
             ListeGewaehlterSpielmodi.Add((Spielmodus)SpielInt);
+            //TODO: Re und Kontra lesen, in den Status-String integrieren und entsprechendes Symbol für den Spieler anzeigen
             SetStatus("Spieler " + SpielerListe[ListeGewaehlterSpielmodi.Count - 1].Name+GetSpielmodusString((Spielmodus)SpielInt));
             return true;
         }
@@ -113,8 +118,12 @@ namespace Doppelkopf_Client
             FensterSpielmodus ModusWahl = new FensterSpielmodus(VerbleibendeKarten);
             ModusWahl.ShowDialog();
             int i = (int)ModusWahl.ChosenMode;
+            bool ansageRe = ModusWahl.Re;
+            bool ansageKontra = ModusWahl.Kontra;
             ModusWahl.Dispose();
             SendNumber(r, w, i);
+            SendBool(r, w, ansageRe);
+            SendBool(r, w, ansageKontra);
             return true;
         }
 
@@ -127,6 +136,8 @@ namespace Doppelkopf_Client
         {
             MessageBox.Show("Funktion 'SetStatus' in Main.cs nicht implementiert!!");
             Status = Nachricht;
+            //TODO: In der GUI ein Feld integrieren, ähnlich vielleicht einem Chatfenster, in dem alle diese Nachrichten dargestellt werden. Vielleicht ein einfaches Label?
+            //Muss keine weiteren Funktionalitäten haben, keine Eingaben nehmen und nix
             return true;
         }
 
@@ -246,7 +257,7 @@ namespace Doppelkopf_Client
             switch (Mod)
             {
                 case (Spielmodus.Normal):
-                case (Spielmodus.StillesSolo):
+                case (Spielmodus.StillesSolo): //Stilles Solo heist still, weil es nicht angesagt wird -> undercover-Solo :D
                     return " sagt ein normales Spiel";
                 case (Spielmodus.Hochzeit):
                     return " sagt eine Hochzeit";
