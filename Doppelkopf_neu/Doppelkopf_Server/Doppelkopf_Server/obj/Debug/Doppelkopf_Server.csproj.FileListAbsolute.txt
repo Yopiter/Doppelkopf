@@ -1,6 +1,0 @@
-C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Server\Doppelkopf_Server\bin\Debug\Doppelkopf_Server.exe.config
-C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Server\Doppelkopf_Server\bin\Debug\Doppelkopf_Server.exe
-C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Server\Doppelkopf_Server\bin\Debug\Doppelkopf_Server.pdb
-C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Server\Doppelkopf_Server\obj\Debug\Doppelkopf_Server.csprojResolveAssemblyReference.cache
-C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Server\Doppelkopf_Server\obj\Debug\Doppelkopf_Server.exe
-C:\Users\martin.schneider\Desktop\C#\Doppelkopf_neu\Doppelkopf_Server\Doppelkopf_Server\obj\Debug\Doppelkopf_Server.pdb
