@@ -27,6 +27,10 @@ namespace Doppelkopf_Client
         List<Spielmodus> ListeGewaehlterSpielmodi;
         string Status;
 
+        #region KonstantenUndZeugs
+        int picBoxBreite = 74;
+        int picBoxHoehe = 56;
+        #endregion
 
         public Main()
         {
@@ -100,11 +104,20 @@ namespace Doppelkopf_Client
             int SpielInt = ReadInt64(r, w);
             ListeGewaehlterSpielmodi.Add((Spielmodus)SpielInt);
             Spieler aktSpieler = SpielerListe[ListeGewaehlterSpielmodi.Count - 1];
-            bool Re= ReadBool(r, w);
+            bool Re = ReadBool(r, w);
             bool Kontra = ReadBool(r, w);
-            //TODO: Neue Picturebox generieren für den Spieler, an die richtige Position legen und aktSpieler.AddZustand() übergeben
-
-            SetStatus("Spieler " + aktSpieler.Name + GetSpielmodusString((Spielmodus)SpielInt));
+            string Nachricht = "Spieler " + aktSpieler.Name + GetSpielmodusString((Spielmodus)SpielInt);
+            if (Re)
+            {
+                Controls.Add(aktSpieler.AddZustand(Zustand.Re));
+                Nachricht += " und ein Re";
+            }
+            if (Kontra)
+            {
+                Controls.Add(aktSpieler.AddZustand(Zustand.Kontra));
+                Nachricht += " und ein Kontra";
+            }
+            SetStatus(Nachricht + " an.");
             return true;
         }
 
@@ -174,10 +187,13 @@ namespace Doppelkopf_Client
                 Namensliste.Add(ReadString(r, w));
             }
             int spPos = Namensliste.IndexOf(PlName) + 1;
+            Size PBSize = new Size(picBoxBreite, picBoxHoehe);
             for (int i = 0; i < 4; i++)
             {
                 int pos = (spPos + i) > 3 ? spPos + i - 4 : spPos + i;
-                OrderedList.Add(new Spieler(Namensliste[pos], StichButtons[i], LabelList[i], i));
+                Spieler newSpieler = new Spieler(Namensliste[pos], StichButtons[i], LabelList[i], pos, (PbAnornung)i);
+                newSpieler.SetPbSize(PBSize);
+                OrderedList.Add(newSpieler);
             }
             foreach (Spieler sp in OrderedList)
             {
