@@ -23,7 +23,7 @@ namespace Doppelkopf_Client
         List<Karte> Stiche;
 
         List<Spieler> SpielerListe;
-        
+
         List<Spielmodus> ListeGewaehlterSpielmodi;
         string Status;
 
@@ -97,10 +97,14 @@ namespace Doppelkopf_Client
         private bool GetSpielmodusAndShowIt(BinaryReader r, BinaryWriter w)
         {
             w.Write(true);
-            int SpielInt=ReadInt64(r, w);
+            int SpielInt = ReadInt64(r, w);
             ListeGewaehlterSpielmodi.Add((Spielmodus)SpielInt);
-            //TODO: Re und Kontra lesen, in den Status-String integrieren und entsprechendes Symbol für den Spieler anzeigen
-            SetStatus("Spieler " + SpielerListe[ListeGewaehlterSpielmodi.Count - 1].Name+GetSpielmodusString((Spielmodus)SpielInt));
+            Spieler aktSpieler = SpielerListe[ListeGewaehlterSpielmodi.Count - 1];
+            bool Re= ReadBool(r, w);
+            bool Kontra = ReadBool(r, w);
+            //TODO: Neue Picturebox generieren für den Spieler, an die richtige Position legen und aktSpieler.AddZustand() übergeben
+
+            SetStatus("Spieler " + aktSpieler.Name + GetSpielmodusString((Spielmodus)SpielInt));
             return true;
         }
 
@@ -243,7 +247,7 @@ namespace Doppelkopf_Client
             {
                 for (int Wert = 0; Wert < 6; Wert++)
                 {
-                    Karte newCard = new Karte(Farbe, Wert, 0); 
+                    Karte newCard = new Karte(Farbe, Wert, 0);
                     Deck.Add(newCard);
                     newCard = new Karte(Farbe, Wert, 1);
                     Deck.Add(newCard);
