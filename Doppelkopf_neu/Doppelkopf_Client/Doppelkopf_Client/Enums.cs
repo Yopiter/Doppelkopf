@@ -33,5 +33,13 @@
         HochzeitOhneAlte,
         Solo,
         Kontra
-    };
+    }
+
+    enum PbAnornung
+    {
+        vertikalAuf,
+        horizontalRechts,
+        vertikalAb,
+        horizontalLinks
+    }
 }

@@ -101,7 +101,7 @@
             // 
             // pB_pl3
             // 
-            this.pB_pl3.Location = new System.Drawing.Point(1192, 307);
+            this.pB_pl3.Location = new System.Drawing.Point(1240, 307);
             this.pB_pl3.Name = "pB_pl3";
             this.pB_pl3.Size = new System.Drawing.Size(74, 56);
             this.pB_pl3.TabIndex = 49;
@@ -110,7 +110,7 @@
             // 
             // pB_pl2
             // 
-            this.pB_pl2.Location = new System.Drawing.Point(608, 55);
+            this.pB_pl2.Location = new System.Drawing.Point(561, 55);
             this.pB_pl2.Name = "pB_pl2";
             this.pB_pl2.Size = new System.Drawing.Size(74, 56);
             this.pB_pl2.TabIndex = 48;
@@ -119,7 +119,7 @@
             // 
             // pB_pl1
             // 
-            this.pB_pl1.Location = new System.Drawing.Point(62, 281);
+            this.pB_pl1.Location = new System.Drawing.Point(8, 281);
             this.pB_pl1.Name = "pB_pl1";
             this.pB_pl1.Size = new System.Drawing.Size(74, 56);
             this.pB_pl1.TabIndex = 47;
@@ -310,7 +310,7 @@
             // 
             // pB_pl4
             // 
-            this.pB_pl4.Location = new System.Drawing.Point(612, 440);
+            this.pB_pl4.Location = new System.Drawing.Point(665, 440);
             this.pB_pl4.Name = "pB_pl4";
             this.pB_pl4.Size = new System.Drawing.Size(74, 56);
             this.pB_pl4.TabIndex = 55;
