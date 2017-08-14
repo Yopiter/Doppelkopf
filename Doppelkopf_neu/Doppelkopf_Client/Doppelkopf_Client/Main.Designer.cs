@@ -42,7 +42,6 @@
             this.BT_Stich_3 = new System.Windows.Forms.Button();
             this.BT_Stich_2 = new System.Windows.Forms.Button();
             this.BT_Stich_1 = new System.Windows.Forms.Button();
-            this.Statusleiste = new System.Windows.Forms.Label();
             this.BT_K12 = new System.Windows.Forms.Button();
             this.BT_K11 = new System.Windows.Forms.Button();
             this.BT_K10 = new System.Windows.Forms.Button();
@@ -57,6 +56,7 @@
             this.BT_K1 = new System.Windows.Forms.Button();
             this.pB_pl4 = new System.Windows.Forms.PictureBox();
             this.LBL_Player4 = new System.Windows.Forms.TextBox();
+            this.LbStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl1)).BeginInit();
@@ -192,14 +192,6 @@
             this.BT_Stich_1.UseVisualStyleBackColor = true;
             this.BT_Stich_1.Visible = false;
             // 
-            // Statusleiste
-            // 
-            this.Statusleiste.AutoSize = true;
-            this.Statusleiste.Location = new System.Drawing.Point(224, 469);
-            this.Statusleiste.Name = "Statusleiste";
-            this.Statusleiste.Size = new System.Drawing.Size(0, 13);
-            this.Statusleiste.TabIndex = 39;
-            // 
             // BT_K12
             // 
             this.BT_K12.Location = new System.Drawing.Point(766, 530);
@@ -327,11 +319,22 @@
             this.LBL_Player4.Text = "Spieler 4";
             this.LBL_Player4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // LbStatus
+            // 
+            this.LbStatus.AutoSize = true;
+            this.LbStatus.ForeColor = System.Drawing.Color.White;
+            this.LbStatus.Location = new System.Drawing.Point(889, 431);
+            this.LbStatus.Name = "LbStatus";
+            this.LbStatus.Size = new System.Drawing.Size(37, 13);
+            this.LbStatus.TabIndex = 56;
+            this.LbStatus.Text = "Status";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1326, 712);
+            this.Controls.Add(this.LbStatus);
             this.Controls.Add(this.pB_pl4);
             this.Controls.Add(this.LBL_Player4);
             this.Controls.Add(this.BT_L_1);
@@ -348,7 +351,6 @@
             this.Controls.Add(this.BT_Stich_3);
             this.Controls.Add(this.BT_Stich_2);
             this.Controls.Add(this.BT_Stich_1);
-            this.Controls.Add(this.Statusleiste);
             this.Controls.Add(this.BT_K12);
             this.Controls.Add(this.BT_K11);
             this.Controls.Add(this.BT_K10);
@@ -388,7 +390,6 @@
         private System.Windows.Forms.Button BT_Stich_3;
         private System.Windows.Forms.Button BT_Stich_2;
         private System.Windows.Forms.Button BT_Stich_1;
-        private System.Windows.Forms.Label Statusleiste;
         private System.Windows.Forms.Button BT_K12;
         private System.Windows.Forms.Button BT_K11;
         private System.Windows.Forms.Button BT_K10;
@@ -403,6 +404,7 @@
         private System.Windows.Forms.Button BT_K1;
         private System.Windows.Forms.PictureBox pB_pl4;
         private System.Windows.Forms.TextBox LBL_Player4;
+        private System.Windows.Forms.Label LbStatus;
     }
 }
 

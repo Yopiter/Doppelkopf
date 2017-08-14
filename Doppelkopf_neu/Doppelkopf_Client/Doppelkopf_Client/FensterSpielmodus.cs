@@ -10,7 +10,7 @@ namespace Doppelkopf_Client
         int AnzahlAlte = 0;
         int AnzahlKönige = 0;
         int AnzahlTrumpf = 0;
-        public Main.Spielmodus ChosenMode;
+        public Spielmodus ChosenMode;
         public bool Re;
         public bool Kontra;
 
@@ -27,7 +27,7 @@ namespace Doppelkopf_Client
             foreach (Karte K in Hand)
             {
                 if (K.IstAlte()) AnzahlAlte++;
-                if (K.GetWert() == "König") AnzahlKönige++;
+                if (K.GetWert() == Kartenwert.König) AnzahlKönige++;
                 if (K.trumpfstärke > -1) AnzahlTrumpf++;
             }
         }
@@ -42,7 +42,7 @@ namespace Doppelkopf_Client
 
         private void BtHochzeit_Click(object sender, EventArgs e)
         {
-            ChosenMode = Main.Spielmodus.Hochzeit;
+            ChosenMode = Spielmodus.Hochzeit;
             Kontra = false;
             Re = cbRe.Checked;
             Hide();
@@ -50,7 +50,7 @@ namespace Doppelkopf_Client
 
         private void BtNormal_Click(object sender, EventArgs e)
         {
-            ChosenMode = AnzahlAlte == 2 ? Main.Spielmodus.StillesSolo : Main.Spielmodus.Normal;
+            ChosenMode = AnzahlAlte == 2 ? Spielmodus.StillesSolo : Spielmodus.Normal;
             Re = cbRe.Checked;
             Kontra = cbKontra.Checked;
             Hide();

@@ -8,7 +8,7 @@
         Eichel = 3
     }
 
-    enum Kartenwert
+    public enum Kartenwert
     {
         Neun = 0,
         König = 1,
@@ -19,7 +19,7 @@
 
     }
 
-    enum Spielmodus
+    public enum Spielmodus
     {
         Normal,
         Hochzeit,

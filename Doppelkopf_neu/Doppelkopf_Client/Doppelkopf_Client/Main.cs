@@ -25,7 +25,7 @@ namespace Doppelkopf_Client
         List<Spieler> SpielerListe;
 
         List<Spielmodus> ListeGewaehlterSpielmodi;
-        string Status;
+        List<string> StatusList;
 
         #region KonstantenUndZeugs
         int picBoxBreite = 74;
@@ -151,10 +151,18 @@ namespace Doppelkopf_Client
         /// <returns></returns>
         private bool SetStatus(string Nachricht)
         {
-            MessageBox.Show("Funktion 'SetStatus' in Main.cs nicht implementiert!!");
-            Status = Nachricht;
-            //TODO: In der GUI ein Feld integrieren, ähnlich vielleicht einem Chatfenster, in dem alle diese Nachrichten dargestellt werden. Vielleicht ein einfaches Label?
-            //Muss keine weiteren Funktionalitäten haben, keine Eingaben nehmen und nix
+            if (Nachricht.Length > 20)
+            {
+                SetStatus(Nachricht.Substring(0, 20));
+                SetStatus(Nachricht.Substring(20));
+                return true;
+            }
+            if (StatusList.Count > 8)
+            {
+                StatusList.RemoveAt(1);
+            }
+            StatusList.Add(Nachricht);
+            LbStatus.Text = string.Join(Environment.NewLine, StatusList);
             return true;
         }
 
@@ -167,6 +175,7 @@ namespace Doppelkopf_Client
         private bool GetKartenVonServer(BinaryReader r, BinaryWriter w)
         {
             List<Karte> Deck = DeckGenerieren();
+            VerbleibendeKarten = new List<Karte>();
             w.Write(true); //Beginn der Kartenübertragung
             for (int kartenzahl = 0; kartenzahl < 12; kartenzahl++)
             {

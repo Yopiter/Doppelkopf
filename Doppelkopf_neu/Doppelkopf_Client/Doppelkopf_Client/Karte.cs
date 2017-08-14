@@ -46,5 +46,10 @@ namespace Doppelkopf_Client
         {
             return farbe == Farben.Eichel && kartenWert == Kartenwert.Ober;
         }
+
+        public Kartenwert GetWert()
+        {
+            return kartenWert;
+        }
     }
 }
