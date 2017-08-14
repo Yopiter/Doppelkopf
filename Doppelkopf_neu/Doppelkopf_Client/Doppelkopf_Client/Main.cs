@@ -56,6 +56,7 @@ namespace Doppelkopf_Client
             LetzterStichButtons = new List<Button> { BT_L_1, BT_L_2, BT_L_3, BT_L_4 };
             LabelList = new List<TextBox> { LBL_Player1, LBL_Player2, LBL_Player3, LBL_Player4 };
             SpielerListe = new List<Spieler>() { null, null, null, null };
+            StatusList = new List<string>() { "Spielverlauf" };
         }
 
         private void WaitForServerCommands(object uselessItem)
