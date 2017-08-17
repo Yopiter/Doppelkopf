@@ -25,7 +25,7 @@ namespace Doppelkopf_Server
         public void StartkarteDefinieren(Karte StK)
         {
             KList = new List<Karte>() { StK };
-            if (StK.Trumpfstärke == -1) StichFarbe = StK.Farbwert;
+            if (StK.trumpfstärke == -1) StichFarbe = (int) StK.farbe;
             else StichFarbe = 0;     //farbwert=0 bedeutet Trumpfstich
             gestochen = false;
         }
@@ -33,15 +33,18 @@ namespace Doppelkopf_Server
         public void KarteGespielt(Karte GelegteKarte)
         {
             KList.Add(GelegteKarte);
-            if (KList.Count == 1) StartkarteDefinieren(GelegteKarte);
-            if (KList.Count == 4) SiegerBestimmen();
+            if (KList.Count == 1)
+                StartkarteDefinieren(GelegteKarte);
+
+            if (KList.Count == 4)
+                SiegerBestimmen();
         }
 
         private void SiegerBestimmen()
         {
             foreach (Karte k in KList)
             {
-                if (k.Trumpfstärke != -1)
+                if (k.trumpfstärke != -1)
                 {
                     Trumpfstich();
                     WertBestimmen();
@@ -51,7 +54,7 @@ namespace Doppelkopf_Server
             Karte HCard = KList[0];
             foreach (Karte k in KList)
             {
-                if (k.Farbwert == StichFarbe && k.Wertzahl > HCard.Wertzahl)
+                if ((int)k.farbe == StichFarbe && (int)k.GetWert() > (int) HCard.GetWert())
                 {
                     HCard = k;
                 }
@@ -66,7 +69,7 @@ namespace Doppelkopf_Server
             Karte HCard = KList[0];
             foreach (Karte k in KList)
             {
-                if (k.Trumpfstärke > HCard.Trumpfstärke)
+                if (k.trumpfstärke > HCard.trumpfstärke)
                 {
                     HCard = k;
                 }
@@ -80,7 +83,7 @@ namespace Doppelkopf_Server
             StichPunktwert = 0;
             foreach (Karte k in KList)
             {
-                StichPunktwert += k.Punktzahl;
+                StichPunktwert += k.punktzahl;
             }
             SpielerGingAn.AddPunkteVonStich(StichPunktwert);
         }
