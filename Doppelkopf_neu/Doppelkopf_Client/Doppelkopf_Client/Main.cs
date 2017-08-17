@@ -164,6 +164,8 @@ namespace Doppelkopf_Client
             }
             StatusList.Add(Nachricht);
             LbStatus.Text = string.Join(Environment.NewLine, StatusList);
+            //TODO: In der GUI ein Feld integrieren, ähnlich vielleicht einem Chatfenster, in dem alle diese Nachrichten dargestellt werden. Vielleicht ein einfaches Label?
+            //Muss keine weiteren Funktionalitäten haben, keine Eingaben nehmen und nix
             return true;
         }
 
