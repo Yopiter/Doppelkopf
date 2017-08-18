@@ -8,6 +8,7 @@ namespace Doppelkopf_Server
         public Spielmodus gameMode;
         public List<Spieler> TeamRe;
         public List<Spieler> TeamKontra;
+        //TODO hier die Stiche Reinpacken + Ablauf?
 
         public enum Spielmodus { Normal, Hochzeit, StillesSolo };
 

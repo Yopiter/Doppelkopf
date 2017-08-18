@@ -9,8 +9,8 @@ namespace Doppelkopf_Server
 
         #region StringListen
         static string[] NachrichtenListeHochzeit = { "Läutet die Glocken! {0} und {1} sind von nun an glücklich verheiratet!", "Die dunkle Allianz aus {0} und {1} hat sich erhoben!", "Bauer sucht Frau kommt zu Happy End: {0} und {1} sind zusammen, bis dass das Spielende sie scheide!", "Batman Forever: Batman ({0}) und Robin({1}) versuchen zusammen, das Spiel zu retten!", "HP und der Feuerkelch: Der dunkle Lord ({0}) hat sich aus dem grab erhoben und plant mit seinem treuesten Diener ({1}), diese Runde für sich zu erobern!" };
-        static string[] ServerSendeSprueche = { "Server sagt: ", "Serverus Snape sagte:", "Und Gott sprach: ", "Martins Minnion meinte: ", "Hört, Hört:", "Höret her und lasst euch sagen: ", "Spacko sagt: " };
-        static string[] NachrichtenListeKeineHochzeit = { "Irgendwer, Eventuell {0}, hat es gerade richtig verkackt :D", "Achievement unlocked - 'Forever Alone'! -1 auf Teamstärke für alle Spieler mit em Namen {0}!", "Forever Single 2 - In der Hauptrolle: {0}", "Nein schatz, du bist nicht dick, aber kommst viel besser rüber, wenn du dich in der Öffentlichkeit von mir fernhältst..." };
+        static string[] ServerSendeSprueche = { "Server sagt: ", "Serverus Snape sagte:", "Und Gott sprach: ", "Martins Minnion meinte: ", "Hört, Hört:", "Höret her und lasst euch sagen: ", "Also: ", "Spacko sagt: ", "Michovski Meerschwein meckerte: " };
+        static string[] NachrichtenListeKeineHochzeit = { "Irgendwer, Eventuell {0}, hat es gerade richtig verkackt :D", "Achievement unlocked - 'Forever Alone'! -1 auf Teamstärke für alle Spieler mit em Namen {0}!", "Forever Single 2 - In der Hauptrolle: {0}", "Nein schatz, du bist nicht dick, aber kommst viel besser rüber, wenn du dich in der Öffentlichkeit von mir fernhältst...", "Die Antwort ist NEIN! Für den Versuch gibts aber trotztdem 3,14159 Punkte an Griffindor und eine Einstweilige Verfügung für {0}." };
         #endregion
 
         #region NormalerAblauf
@@ -18,18 +18,22 @@ namespace Doppelkopf_Server
         static void AblaufNormal()
         {
             StichListe = new List<Stich>();
-            Random RanInt = new Random();
+            Random RanInt = new Random((int) DateTime.Now.Ticks);
             int SpPosition = RanInt.Next(4); //Zufällige Bestimmung des Startspielers!
+
             List<Spieler> Reihenfolge = new List<Spieler>();
             for (int Stichzahl = 0; Stichzahl < 12; Stichzahl++) //12 Stiche pro Spiel
             {
+                //Reihenfolge festlegen
                 Reihenfolge.Clear();
                 for (int x = 0; x < 4; x++)
                 {
                     int z = x + SpPosition;
-                    if (z > 3) z -= 4;
+                    if (z > 3)
+                        z -= 4;
                     Reihenfolge.Add(SpielerListe[z]);
                 }
+
                 Stich CurStich = new Stich(Reihenfolge);
                 for (int i = 0; i < 4; i++)         //Innerhalb eines Stiches
                 {
@@ -38,6 +42,7 @@ namespace Doppelkopf_Server
                     CurStich.KarteGespielt(Deck[ID]);   //Karte eintragen
                     BroadcastCard(ID, SpPosition + i);  //Karte broadcasten
                 }
+
                 StichListe.Add(CurStich);
                 SpPosition = SpielerListe.IndexOf(CurStich.SpielerGingAn);
                 Console.WriteLine("Stich mit den folgenden Punkten geht an: " + CurStich.SpielerGingAn.Name + " mit " + CurStich.StichPunktwert + " Punkten");
@@ -106,7 +111,7 @@ namespace Doppelkopf_Server
 
         static void AblaufStillesSolo()
         {
-            throw new NotImplementedException("Stilles Solo noch nicht verfügbar. Bitte besuchen sie unseren Shop und suchen bestellen sie das Solo-DLC 'Forever Alone', um diesen Spielmodus freizuschalten.");
+            throw new NotImplementedException("Stilles Solo noch nicht verfügbar. Bitte besuchen sie unseren Shop und bestellen sie das Solo-DLC 'Forever Alone' vor, um diesen Spielmodus (eventuell) freizuschalten. (Wenn martin Faul ist passiert aber nichts und Ihr Geld ist weg! *Duh*)");
         }
     }
 }
