@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 
@@ -12,6 +13,7 @@ namespace Doppelkopf_Server
         public BinaryWriter writer;
         public String Name;
         public int Punktzahl;
+        public List<Karte> Handkarten;
 
         public Spieler(TcpClient Verb, String name)
         {
@@ -20,6 +22,7 @@ namespace Doppelkopf_Server
             reader = new BinaryReader(ClSt);
             writer = new BinaryWriter(ClSt);
             Name = name;
+            Handkarten = new List<Karte>();
         }
 
         public void SendText(String nachricht)

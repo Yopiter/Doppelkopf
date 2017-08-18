@@ -13,7 +13,6 @@ namespace Doppelkopf_Server
         static List<Spieler> SpielerListe;
         static IPAddress ServerIP;
         static int PortNummer;
-        static List<List<Karte>> Spielerkarten; //TODO in Spieler verschieben
         static Spiel CurrentGame;
         const string ANSWER_SUCCESS = "Roger Roger :D"; //DLL
         const string ANSWER_FAILIURE = "Move bitch get out the way.";//DLL
@@ -131,17 +130,15 @@ namespace Doppelkopf_Server
         /// </summary>
         private static void KartenAusgeben()
         {
-            Spielerkarten = new List<List<Karte>>();
             for (int i = 0; i < 3; i++)
             {
-                Spielerkarten.Add(GetRandomHandkarten());
+                SpielerListe[i].Handkarten=GetRandomHandkarten();
             }
-            Spielerkarten.Add(Deck);
+            SpielerListe[3].Handkarten=Deck;
 
-            DeckGenerieren();//TODO why?
-            for (int i = 0; i < 4; i++)
+            foreach (Spieler sp in SpielerListe)
             {
-                HandkartenAnSpielerSenden(Spielerkarten[i], SpielerListe[i]);
+                HandkartenAnSpielerSenden(sp.Handkarten, sp);
             }
         }
 
@@ -170,7 +167,7 @@ namespace Doppelkopf_Server
             List<int> SpielmodusStimmen = new List<int>();
             foreach (Spieler Playa in SpielerListe)
             {
-                Playa.SendText("Spielmodus_Start");
+                Playa.SendText("Spielmodus_Start"); //Get them in the mood...
             }
             foreach (Spieler Playa in SpielerListe)
             {
@@ -276,7 +273,7 @@ namespace Doppelkopf_Server
 
         private static void SpielmodusStarten()
         {
-            StichListe = new List<Stich>(); //TODO muss das hier initialisiert werden?
+            StichListe = new List<Stich>(); //TODO muss das hier initialisiert werden? //NOT-TO-DO: Ja, muss es :D
             switch (CurrentGame.gameMode)
             {
                 case (Spiel.Spielmodus.Normal):
