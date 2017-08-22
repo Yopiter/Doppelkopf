@@ -1,6 +1,6 @@
 ﻿namespace Doppelkopf_Client
 {
-    enum Farben
+    public enum Farben
     {
         Schellen = 0,
         Herz = 1,
@@ -16,7 +16,6 @@
         Ober = 3,
         Zehn = 4,
         Ass = 5
-
     }
 
     public enum Spielmodus

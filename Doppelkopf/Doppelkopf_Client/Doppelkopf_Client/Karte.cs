@@ -7,8 +7,8 @@ namespace Doppelkopf_Client
         public int id;
         public int trumpfstärke; //-1 -> kein Trumpf
         public int punktzahl;
-        Farben farbe;
-        Kartenwert kartenWert;
+        public Farben farbe;
+        public Kartenwert kartenWert;
 
         string kartenName;
 
