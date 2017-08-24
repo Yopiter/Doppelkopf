@@ -10,7 +10,7 @@ namespace Doppelkopf_Client
 {
     public partial class Main : Form
     {
-        
+        //TODO: Mouse_hover-Event für jede karte machen und nach oben rutschen lassen :D
         TcpClient Server;
         string PlName;
 

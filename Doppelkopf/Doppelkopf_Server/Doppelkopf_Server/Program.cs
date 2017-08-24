@@ -375,6 +375,12 @@ namespace Doppelkopf_Server
                 sp.SendNumber(SpielerListe.IndexOf(CurrentGame.TeamRe[2]));
             }
         }
+
+        private static void BroadcastStartspieler(int spPosition)
+        {
+            string nachricht=string.Format(GetRandomStringFromArrayOrList(NachrichtenListeStartspieler),SpielerListe[spPosition].Name);
+            BroadcastMessage(nachricht);
+        }
         #endregion
 
         private static void ProgrammMitFehlermeldungBeenden(string Fehlermeldung)
