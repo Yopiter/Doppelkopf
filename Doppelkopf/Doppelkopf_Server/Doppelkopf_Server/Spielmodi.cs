@@ -5,9 +5,10 @@ namespace Doppelkopf_Server
 {
     public partial class Program
     {
+        private const string NACHRICHT_AMZUG = "Du Du Du Du bist dran"; //DLL
         static List<Stich> StichListe;
 
-        #region StringListen
+        #region StringListen //DLL
         static string[] NachrichtenListeHochzeit = { "Läutet die Glocken! {0} und {1} sind von nun an glücklich verheiratet!", "Die dunkle Allianz aus {0} und {1} hat sich erhoben!", "Bauer sucht Frau kommt zu Happy End: {0} und {1} sind zusammen, bis dass das Spielende sie scheide!", "Batman Forever: Batman ({0}) und Robin({1}) versuchen zusammen, das Spiel zu retten!", "HP und der Feuerkelch: Der dunkle Lord ({0}) hat sich aus seinem Grab erhoben und plant mit seinem treuesten Diener ({1}), diese Runde für sich zu erobern!", "Iiih, schau mal, {0} und {1} machen Hochzeitsnacht!" };
         static string[] ServerSendeSprueche = { "Server sagt: ", "Serverus Snape sagte:", "Und Gott sprach: ", "Martins Minion meinte: ", "Hört, Hört:", "Höret her und lasst euch sagen: ", "Also: ", "Spacko sagt: ", "Michovski Meerschwein meckerte: " };
         static string[] NachrichtenListeKeineHochzeit = { "Irgendwer, Eventuell {0}, hat es gerade richtig verkackt :D", "Achievement unlocked - 'Forever Alone'! -1 auf Teamstärke für alle Spieler mit em Namen {0}!", "Forever Single 2 - In der Hauptrolle: {0}", "Nein {0}, du bist nicht dick, aber kommst viel besser rüber, wenn du dich in der Öffentlichkeit von mir fernhältst...", "Die Antwort ist NEIN! Für den Versuch gibts aber trotztdem 3,14159265 Punkte an Griffindor und eine Einstweilige Verfügung für {0}." };
@@ -38,7 +39,7 @@ namespace Doppelkopf_Server
                 Stich CurStich = new Stich(Reihenfolge);
                 for (int i = 0; i < 4; i++)         //Innerhalb eines Stiches
                 {
-                    Reihenfolge[i].SendText("Du Du Du Du bist dran!");  //Startspieler Erlaubnis erteilen
+                    Reihenfolge[i].SendText(NACHRICHT_AMZUG);  //Startspieler Erlaubnis erteilen
                     int ID = Reihenfolge[i].ReadInt64();
                     CurStich.KarteGespielt(Deck[ID]);   //Karte eintragen
                     BroadcastCard(ID, SpPosition + i);  //Karte broadcasten

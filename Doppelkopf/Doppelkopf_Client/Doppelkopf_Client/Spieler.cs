@@ -90,5 +90,11 @@ namespace Doppelkopf_Client
         {
             PbSize = newSize;
         }
+
+        public void KarteLegenLassen(Karte K)
+        {
+            btKarte.Image = new Bitmap(K.GetImagePath());
+            Kartenzahl--;
+        }
     }
 }

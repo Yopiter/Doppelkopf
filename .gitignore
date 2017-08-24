@@ -1,3 +1,7 @@
 .vs
 obj
 .cache
+/Doppelkopf/Doppelkopf_Server/Doppelkopf_Server/bin/Debug
+/Doppelkopf/Doppelkopf_Client/Doppelkopf_Client/bin/Debug/Doppelkopf_Client.exe
+/Doppelkopf/Doppelkopf_Client/Doppelkopf_Client/bin/Debug/Doppelkopf_Client.exe.config
+/Doppelkopf/Doppelkopf_Client/Doppelkopf_Client/bin/Debug/Doppelkopf_Client.pdb
