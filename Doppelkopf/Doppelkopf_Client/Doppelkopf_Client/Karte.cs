@@ -46,11 +46,5 @@ namespace Doppelkopf_Client
         {
             return farbe == Farben.Eichel && kartenWert == Kartenwert.Ober;
         }
-
-        //TODO why the fuck gibts ne getter Methode wenn das ding public ist? o.O
-        public Kartenwert GetWert()
-        {
-            return kartenWert;
-        }
     }
 }

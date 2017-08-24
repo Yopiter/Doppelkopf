@@ -11,6 +11,8 @@ namespace Doppelkopf_Client
         public TcpClient Host;
         public String CName;
 
+        const string ANSWER_SUCCESS = "Roger Roger"; //DLL
+
         public LogIn()
         {
             InitializeComponent();
@@ -30,11 +32,19 @@ namespace Doppelkopf_Client
                 return;
             }
             Host = new TcpClient();
-            Host.Connect(Adresse, Port);
+            try
+            {
+                Host.Connect(Adresse, Port);
+            }
+            catch (Exception ex)
+            {
+                LB_Status.Text = "Keine Verbindung möglich: " + ex.Message;
+                return;
+            }
             BinaryReader r = new BinaryReader(Host.GetStream());
             BinaryWriter w = new BinaryWriter(Host.GetStream());
             w.Write(name);
-            if (r.ReadString() != "Roger Roger")
+            if (r.ReadString() != ANSWER_SUCCESS)
             {
                 LB_Status.Text = "Kommunikation fehlgeschlagen. Name möglicherweise bereits vergeben";
                 Host.Close();

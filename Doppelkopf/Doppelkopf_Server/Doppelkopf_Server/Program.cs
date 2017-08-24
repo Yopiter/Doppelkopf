@@ -52,7 +52,7 @@ namespace Doppelkopf_Server
         static void DeckGenerieren()
         {
             Deck = new List<Karte>();
-            
+
             for (int Farbe = 0; Farbe < 4; Farbe++)
             {
                 for (int Wert = 0; Wert < 6; Wert++)
@@ -139,9 +139,9 @@ namespace Doppelkopf_Server
         {
             for (int i = 0; i < 3; i++)
             {
-                SpielerListe[i].Handkarten=GetRandomHandkarten();
+                SpielerListe[i].Handkarten = GetRandomHandkarten();
             }
-            SpielerListe[3].Handkarten=Deck;
+            SpielerListe[3].Handkarten = Deck;
 
             foreach (Spieler sp in SpielerListe)
             {
@@ -263,15 +263,9 @@ namespace Doppelkopf_Server
             List<Spieler> SpielerMitAlten = new List<Spieler>();
             foreach (Spieler sp in SpielerListe)
             {
-                foreach (Karte K in sp.Handkarten)
+                if (sp.HatAlte())
                 {
-                    if (K.IstAlte())
-                    {
-                        if (!SpielerMitAlten.Contains(sp))
-                        {
-                            SpielerMitAlten.Add(sp);
-                        }
-                    }
+                    SpielerMitAlten.Add(sp);
                 }
             }
             return SpielerMitAlten;
@@ -337,7 +331,7 @@ namespace Doppelkopf_Server
             foreach (Spieler sp in SpielerListe)
             {
                 sp.SendText("TeamRe");
-                foreach(Spieler Re in CurrentGame.TeamRe)
+                foreach (Spieler Re in CurrentGame.TeamRe)
                 {
                     sp.SendNumber(SpielerListe.IndexOf(Re)); //unbekannt viele, deshalb Abbruch mit -1
                 }
@@ -394,6 +388,6 @@ namespace Doppelkopf_Server
         {
             Random IndexGenerator = new Random();
             return Array.ElementAt(IndexGenerator.Next(Array.Count()));
-        } 
+        }
     }
 }

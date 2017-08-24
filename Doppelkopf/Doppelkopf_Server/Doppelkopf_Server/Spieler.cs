@@ -68,5 +68,17 @@ namespace Doppelkopf_Server
         {
             Punktzahl += Punkte;
         }
+
+        public bool HatAlte()
+        {
+            foreach (Karte K in Handkarten)
+            {
+                if (K.IstAlte())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

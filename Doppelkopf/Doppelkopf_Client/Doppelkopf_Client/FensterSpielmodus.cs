@@ -27,7 +27,7 @@ namespace Doppelkopf_Client
             foreach (Karte K in Hand)
             {
                 if (K.IstAlte()) AnzahlAlte++;
-                if (K.GetWert() == Kartenwert.König) AnzahlKönige++;
+                if (K.kartenWert == Kartenwert.König) AnzahlKönige++;
                 if (K.trumpfstärke > -1) AnzahlTrumpf++;
             }
         }
