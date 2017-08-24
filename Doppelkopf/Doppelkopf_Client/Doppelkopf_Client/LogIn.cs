@@ -34,7 +34,7 @@ namespace Doppelkopf_Client
             BinaryReader r = new BinaryReader(Host.GetStream());
             BinaryWriter w = new BinaryWriter(Host.GetStream());
             w.Write(name);
-            if (r.ReadString() != "Roger Roger :D")
+            if (r.ReadString() != "Roger Roger")
             {
                 LB_Status.Text = "Kommunikation fehlgeschlagen. Name möglicherweise bereits vergeben";
                 Host.Close();

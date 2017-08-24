@@ -16,10 +16,10 @@ namespace Doppelkopf_Client
 
         public FensterSpielmodus(List<Karte> Handkarten)
         {
+            InitializeComponent();
             Hand = Handkarten;
             HandAnalysieren();
             SchaltflaechenVerstecken();
-            InitializeComponent();
         }
 
         private void HandAnalysieren()
