@@ -11,7 +11,7 @@ namespace Doppelkopf_Client
         public TcpClient Host;
         public String CName;
 
-        const string ANSWER_SUCCESS = "Roger Roger :D"; //DLL
+        const string ANSWER_SUCCESS = "Roger Roger"; //DLL
 
         public LogIn()
         {
@@ -36,7 +36,7 @@ namespace Doppelkopf_Client
             {
                 Host.Connect(Adresse, Port);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LB_Status.Text = "Keine Verbindung möglich: " + ex.Message;
                 return;
