@@ -151,6 +151,7 @@
             this.LBL_Player2.BackColor = System.Drawing.SystemColors.Control;
             this.LBL_Player2.Location = new System.Drawing.Point(561, 29);
             this.LBL_Player2.Name = "LBL_Player2";
+            this.LBL_Player2.ReadOnly = true;
             this.LBL_Player2.Size = new System.Drawing.Size(178, 20);
             this.LBL_Player2.TabIndex = 44;
             this.LBL_Player2.Text = "Spieler 2";
@@ -363,6 +364,7 @@
             this.Controls.Add(this.BT_K3);
             this.Controls.Add(this.BT_K2);
             this.Controls.Add(this.BT_K1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Main";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl3)).EndInit();
