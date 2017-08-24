@@ -49,7 +49,8 @@ namespace Doppelkopf_Client
 
         public string GetImagePath()
         {
-            return string.Format("Ress\\Karten_Template\\{0]\\{1}.png", (int)farbe, (int)kartenWert);
+            string bullshit = string.Format("Ress\\Karten_Template\\{0}\\{1}.png", (int)farbe, (int)kartenWert);
+            return bullshit;
         }
     }
 }
