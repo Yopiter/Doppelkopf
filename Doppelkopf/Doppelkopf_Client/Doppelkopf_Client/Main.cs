@@ -203,13 +203,17 @@ namespace Doppelkopf_Client
             VerbleibendeKarten.Sort((x, y) => x.id.CompareTo(y.id));
             List<Karte> Trumpflist = new List<Karte>();
             List<Karte> Farblist = new List<Karte>();
+
             foreach (Karte Kar in VerbleibendeKarten)
             {
-                if (Kar.trumpfstärke != -1) { Trumpflist.Add(Kar); }
-                else { Farblist.Add(Kar); }
+                if (Kar.trumpfstärke != -1)
+                    Trumpflist.Add(Kar);
+                else
+                    Farblist.Add(Kar);
             }
+
             if (Trumpflist.Count > 1) Trumpflist.Sort((x, y) => x.trumpfstärke.CompareTo(y.trumpfstärke));
-            Trumpflist.AddRange(Farblist);
+                Trumpflist.AddRange(Farblist);
             VerbleibendeKarten = Trumpflist;
         }
 
