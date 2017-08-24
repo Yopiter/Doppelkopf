@@ -43,6 +43,7 @@ namespace Doppelkopf_Client
                 Environment.Exit(0);
             Server = AuthFenster.Host;
             PlName = AuthFenster.CName;
+            this.Text = "DOppelkopf - " + PlName;
 
             ThreadPool.QueueUserWorkItem(WaitForServerCommands);
         }

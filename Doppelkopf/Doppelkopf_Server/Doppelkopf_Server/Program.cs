@@ -14,7 +14,7 @@ namespace Doppelkopf_Server
         static IPAddress ServerIP;
         static int PortNummer;
         static Spiel CurrentGame;
-        const string ANSWER_SUCCESS = "Roger Roger :D"; //DLL
+        const string ANSWER_SUCCESS = "Roger Roger"; //DLL
         const string ANSWER_FAILIURE = "Move bitch get out the way.";//DLL
 
         static void Main(string[] args)
