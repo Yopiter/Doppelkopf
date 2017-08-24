@@ -43,7 +43,7 @@ namespace Doppelkopf_Client
                 Environment.Exit(0);
             Server = AuthFenster.Host;
             PlName = AuthFenster.CName;
-            this.Text = "DOppelkopf - " + PlName;
+            this.Text = "Doppelkopf - " + PlName;
 
             ThreadPool.QueueUserWorkItem(WaitForServerCommands);
         }
@@ -193,9 +193,9 @@ namespace Doppelkopf_Client
         private void KartenSortierenUndAnzeigen()
         {
             KartenSortieren();
-            foreach(Karte curCard in VerbleibendeKarten)
+            foreach (Karte curCard in VerbleibendeKarten)
             {
-                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = new Bitmap("Ress\\Karten_Template\\" + (int) curCard.farbe + "\\" + (int) curCard.kartenWert + ".png");
+                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = new Bitmap("Ress\\Karten_Template\\" + (int)curCard.farbe + "\\" + (int)curCard.kartenWert + ".png");
             }
         }
 
@@ -214,7 +214,7 @@ namespace Doppelkopf_Client
             }
 
             if (Trumpflist.Count > 1) Trumpflist.Sort((x, y) => x.trumpfstärke.CompareTo(y.trumpfstärke));
-                Trumpflist.AddRange(Farblist);
+            Trumpflist.AddRange(Farblist);
             VerbleibendeKarten = Trumpflist;
         }
 
