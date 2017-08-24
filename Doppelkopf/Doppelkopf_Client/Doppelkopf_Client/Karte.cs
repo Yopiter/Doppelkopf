@@ -46,5 +46,10 @@ namespace Doppelkopf_Client
         {
             return farbe == Farben.Eichel && kartenWert == Kartenwert.Ober;
         }
+
+        public string GetImagePath()
+        {
+            return string.Format("Ress\\Karten_Template\\{0]\\{1}.png", (int)farbe, (int)kartenWert);
+        }
     }
 }

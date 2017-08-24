@@ -10,6 +10,7 @@ namespace Doppelkopf_Client
 {
     public partial class Main : Form
     {
+        
         TcpClient Server;
         string PlName;
 
@@ -23,10 +24,15 @@ namespace Doppelkopf_Client
 
         List<Spieler> SpielerListe;
 
-        List<Spielmodus> ListeGewaehlterSpielmodi;
+        List<Spielmodus> ListeGewaehlteSpielmodi;
         List<string> StatusList;
 
+        bool AmZug = false;
+
+        Spielmodus FinalerModus;
         #region KonstantenUndZeugs
+        private const int STATUS_NACHRICHTENLÄNGE = 20;
+        private const int STATUS_NACHRICHTENANZAHL = 8;
         int picBoxBreite = 74;
         int picBoxHoehe = 56;
         #endregion
@@ -76,7 +82,7 @@ namespace Doppelkopf_Client
                         break;
                     case ("Spielmodus_Start"):
                         Invoke((Func<string, bool>)SetStatus, "Ansage von Spielmodi: Warte auf Spieler " + SpielerListe[0].Name);
-                        ListeGewaehlterSpielmodi = new List<Spielmodus>();
+                        ListeGewaehlteSpielmodi = new List<Spielmodus>();
                         w.Write(true);
                         break;
                     case ("Spielmodus_Abfrage"):
@@ -89,8 +95,10 @@ namespace Doppelkopf_Client
                         Invoke((Func<BinaryReader, BinaryWriter, bool>)NachrichtHolenUndZeigen, r, w);
                         break;
                     case ("Spielmodus_final"):
-                        //TODO: Lesen des finalen Spielmoduses und Anzeige. Spielender ist nur für die Hochzeit interessant, dann muss das Hochzeitssymbol aus dem Ordner Ress/Icons angezeigt werden.
-                        //Festlegen des aktuellen spielmoduses als globale Variable
+                        Invoke((Func<BinaryReader, BinaryWriter, bool>)FinalenSpielModusLesenUndAnzeigen, r, w);
+                        break;
+                    case ("Du Du Du Du bist dran"):
+                        Invoke((Func<BinaryReader, BinaryWriter, bool>)OnSelbstAmZug, r, w);
                         break;
                     default:
                         MessageBox.Show("Unbekannter Befehl: " + Nachricht);
@@ -99,12 +107,27 @@ namespace Doppelkopf_Client
             }
         }
 
+        /// <summary>
+        /// Spieler muss Karte legen oder requiten.
+        /// Verschiedene Situationen anhand des Spielmoduses unterscheiden
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="w"></param>
+        /// <returns></returns>
+        private bool OnSelbstAmZug(BinaryReader r, BinaryWriter w)
+        {
+            //TODO: Buttons mit nicht spielbaren Karten deaktivieren. Vertraue niemals einem Spieler in einem Online-Game
+            SetStatus("Du bist dran!");
+            AmZug = true;
+            return true;
+        }
+
         private bool GetSpielmodusAndShowIt(BinaryReader r, BinaryWriter w)
         {
             w.Write(true);
             int SpielInt = ReadInt64(r, w);
-            ListeGewaehlterSpielmodi.Add((Spielmodus)SpielInt);
-            Spieler aktSpieler = SpielerListe[ListeGewaehlterSpielmodi.Count - 1];
+            ListeGewaehlteSpielmodi.Add((Spielmodus)SpielInt);
+            Spieler aktSpieler = SpielerListe[ListeGewaehlteSpielmodi.Count - 1];
             bool Re = ReadBool(r, w);
             bool Kontra = ReadBool(r, w);
             string Nachricht = "Spieler " + aktSpieler.Name + GetSpielmodusString((Spielmodus)SpielInt);
@@ -122,11 +145,41 @@ namespace Doppelkopf_Client
             return true;
         }
 
+        private bool FinalenSpielModusLesenUndAnzeigen(BinaryReader r, BinaryWriter w)
+        {
+            w.Write(true);
+            FinalerModus = (Spielmodus)ReadInt64(r, w);
+            Spieler Spielender = SpielerListe[ReadInt64(r, w)];
+            switch (FinalerModus)
+            {
+                case (Spielmodus.Normal): //sneaky sneaky
+                case (Spielmodus.StillesSolo):
+                    MessageBox.Show("Es wird ein normales Spiel gespielt. Irgendwer fängt an...");
+                    break;
+                case (Spielmodus.Hochzeit):
+                    MessageBox.Show(string.Format("Spieler {0} spielt eine Hochzeit.", Spielender.Name));
+                    Spielender.AddZustand(Zustand.HochzeitAlte);
+                    break;
+                default:
+                    ProgrammMitFehlerBeenden("Es wird ein Spielmodus gespielt, der noch nicht erfunden wurde. Der Verdacht auf Zeitreisende wurde bestätigt.");
+                    break;
+            }
+            return true;
+        }
+
+        private void ProgrammMitFehlerBeenden(string nachricht)
+        {
+            MessageBox.Show(nachricht);
+            //TODO: Awesome Animation fürs Beenden zeigen, bsp: Alle Karten rot blinken lassen oder so.
+            //Wenn schon Fehler, dann richtig :D
+            Environment.Exit(0);
+        }
+
         private bool NachrichtHolenUndZeigen(BinaryReader r, BinaryWriter w)
         {
             w.Write(true);
             string nachricht = ReadString(r, w);
-            MessageBox.Show(nachricht, "Nachricht");
+            SetStatus(nachricht);
             return true;
         }
 
@@ -152,20 +205,18 @@ namespace Doppelkopf_Client
         /// <returns></returns>
         private bool SetStatus(string Nachricht)
         {
-            if (Nachricht.Length > 20)
+            if (Nachricht.Length > STATUS_NACHRICHTENLÄNGE)
             {
-                SetStatus(Nachricht.Substring(0, 20));
-                SetStatus(Nachricht.Substring(20));
+                SetStatus(Nachricht.Substring(0, STATUS_NACHRICHTENLÄNGE));
+                SetStatus(Nachricht.Substring(STATUS_NACHRICHTENLÄNGE));
                 return true;
             }
-            if (StatusList.Count > 8)
+            if (StatusList.Count > STATUS_NACHRICHTENANZAHL)
             {
-                StatusList.RemoveAt(1);
+                StatusList.RemoveAt(1); //Oberste Nachticht nicht löschen, ist Überschrift
             }
             StatusList.Add(Nachricht);
             LbStatus.Text = string.Join(Environment.NewLine, StatusList);
-            //TODO: In der GUI ein Feld integrieren, ähnlich vielleicht einem Chatfenster, in dem alle diese Nachrichten dargestellt werden. Vielleicht ein einfaches Label?
-            //Muss keine weiteren Funktionalitäten haben, keine Eingaben nehmen und nix
             return true;
         }
 
@@ -195,7 +246,8 @@ namespace Doppelkopf_Client
             KartenSortieren();
             foreach (Karte curCard in VerbleibendeKarten)
             {
-                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = new Bitmap("Ress\\Karten_Template\\" + (int)curCard.farbe + "\\" + (int)curCard.kartenWert + ".png");
+                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = new Bitmap(curCard.GetImagePath());
+                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Refresh();
             }
         }
 
