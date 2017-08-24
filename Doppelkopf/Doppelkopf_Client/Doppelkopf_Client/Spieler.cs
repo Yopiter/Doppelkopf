@@ -27,6 +27,7 @@ namespace Doppelkopf_Client
             tbLabel = labelbox;
             PbOrdnung = Anordnung;
             AbsolutePositionAufServer = Position;
+            Kartenzahl = 12;
         }
 
         public PictureBox AddZustand(Zustand NeuerZustand)
