@@ -7,10 +7,11 @@ namespace Doppelkopf_Client
         public int id;
         public int trumpfstärke; //-1 -> kein Trumpf
         public int punktzahl;
-        Farben farbe;
-        Kartenwert kartenWert;
+        public Farben farbe;
+        public Kartenwert kartenWert;
 
         string kartenName;
+        static int[] PunkteArray = new int[] { 0, 4, 2, 3, 10, 11 };
 
         public Karte(int KFarbe, int KWert, int edition)
         {
@@ -38,7 +39,6 @@ namespace Doppelkopf_Client
 
         private int PunkzahlBestimmung()
         {
-            int[] PunkteArray = new int[] { 0, 4, 2, 3, 10, 11 };
             return PunkteArray[(int)kartenWert];
         }
 
@@ -47,6 +47,7 @@ namespace Doppelkopf_Client
             return farbe == Farben.Eichel && kartenWert == Kartenwert.Ober;
         }
 
+        //TODO why the fuck gibts ne getter Methode wenn das ding public ist? o.O
         public Kartenwert GetWert()
         {
             return kartenWert;

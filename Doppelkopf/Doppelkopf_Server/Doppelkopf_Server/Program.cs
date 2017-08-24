@@ -19,6 +19,13 @@ namespace Doppelkopf_Server
 
         static void Main(string[] args)
         {
+            //Manual für Spackos
+            Console.WriteLine("NICHT SCHLIESßEN! Bitte lies das, bevor du den Server minimierst und vergist!!");
+            Console.WriteLine("Um diesen Server zu nutzen, musst du im Folgenden bitte 2 (in Worten: Zwei) Eingaben tätigen oder wenigstens 2 Mal Enter drücken.");
+            Console.WriteLine("Wenn du das nicht tust, werden schreckliche Dinge geschehen, eine Plage wird über deine Familie kommen und die Clients können nicht connecten.");
+            Console.WriteLine("Jeder, der diesen Fehler macht und sich dann bei den Entwicklern beschwert, erhält den Titel 'DAU of Doom' auf Lebenszeit.");
+            Console.WriteLine("Vielen Dank für ihre Aufmerksamkeit.");
+            Console.WriteLine("MfG, ihr Entwicklerteam");
             //Initialisiere Server
             Console.WriteLine("Geben sie eine IP-Adresse an oder lassen sie die Eingabe frei, um auf beliebigen IPs zu hören.");
             string ipString = Console.ReadLine();

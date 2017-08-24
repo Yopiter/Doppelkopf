@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
@@ -187,7 +186,36 @@ namespace Doppelkopf_Client
                 VerbleibendeKarten.Add(Deck[ID]);
             }
             SetStatus("Karten erhalten");
+            KartenSortierenUndAnzeigen();
             return true;
+        }
+
+        private void KartenSortierenUndAnzeigen()
+        {
+            KartenSortieren();
+            foreach(Karte curCard in VerbleibendeKarten)
+            {
+                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = new Bitmap("Ress\\Karten_Template\\" + (int) curCard.farbe + "\\" + (int) curCard.kartenWert + ".png");
+            }
+        }
+
+        private void KartenSortieren()
+        {
+            VerbleibendeKarten.Sort((x, y) => x.id.CompareTo(y.id));
+            List<Karte> Trumpflist = new List<Karte>();
+            List<Karte> Farblist = new List<Karte>();
+
+            foreach (Karte Kar in VerbleibendeKarten)
+            {
+                if (Kar.trumpfstärke != -1)
+                    Trumpflist.Add(Kar);
+                else
+                    Farblist.Add(Kar);
+            }
+
+            if (Trumpflist.Count > 1) Trumpflist.Sort((x, y) => x.trumpfstärke.CompareTo(y.trumpfstärke));
+                Trumpflist.AddRange(Farblist);
+            VerbleibendeKarten = Trumpflist;
         }
 
         private void GetSpielerVonServer(BinaryReader r, BinaryWriter w)
