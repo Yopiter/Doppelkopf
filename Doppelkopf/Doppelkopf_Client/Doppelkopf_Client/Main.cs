@@ -246,8 +246,11 @@ namespace Doppelkopf_Client
             KartenSortieren();
             foreach (Karte curCard in VerbleibendeKarten)
             {
-                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = new Bitmap(curCard.GetImagePath());
-                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Refresh();
+                string cardpath = curCard.GetImagePath();
+                string basepath = AppDomain.CurrentDomain.BaseDirectory;
+                string path = Path.Combine(basepath, cardpath);
+                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = Image.FromFile(path);
+                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Visible = true;
             }
         }
 
