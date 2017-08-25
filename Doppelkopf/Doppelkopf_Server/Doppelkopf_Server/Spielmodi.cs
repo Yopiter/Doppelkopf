@@ -16,15 +16,26 @@ namespace Doppelkopf_Server
         static string[] NachrichtenListeStartspieler = { "Der/DieDas größte Opfer beginnt: {0]", "Der Spielre mit den meisten 3. Zähnen beginnt: {0}", "Gottimperator {0} beginnt", "Spackenstart: {0}", "{0} der Fabulöse spielt den Auftakt", "Anstoß für {0}", "{0} kommt wie immer zuerst (That's what she said...)","{0} beginnt, doch Schwarz gewinnt!" };
         #endregion
 
+        /// <summary>
+        /// Allgemeine Funktion zu Beginn einer Runde
+        /// </summary>
+        /// <returns>Zufälliger Index des Startspielers</returns>
+        static int AblaufStarten()
+        {
+            StichListe = new List<Stich>();
+            Random RanInt = new Random((int)DateTime.Now.Ticks);
+            int SpPosition = RanInt.Next(4); //Zufällige Bestimmung des Startspielers!
+
+            BroadcastStartspieler(SpPosition);
+
+            return SpPosition;
+        }
+
         #region NormalerAblauf
 
         static void AblaufNormal()
         {
-            StichListe = new List<Stich>();
-            Random RanInt = new Random((int) DateTime.Now.Ticks);
-            int SpPosition = RanInt.Next(4); //Zufällige Bestimmung des Startspielers!
-
-            BroadcastStartspieler(SpPosition);
+            int SpPosition = AblaufStarten();
 
             List<Spieler> Reihenfolge = new List<Spieler>();
             for (int Stichzahl = 0; Stichzahl < 12; Stichzahl++) //12 Stiche pro Spiel
@@ -45,7 +56,8 @@ namespace Doppelkopf_Server
                     Reihenfolge[i].SendText(NACHRICHT_AMZUG);  //Startspieler Erlaubnis erteilen
                     int ID = Reihenfolge[i].ReadInt64();
                     CurStich.KarteGespielt(Deck[ID]);   //Karte eintragen
-                    BroadcastCard(ID, SpPosition + i);  //Karte broadcasten
+                    int SpielerID = SpPosition + i > 3 ? SpPosition + i - 4 : SpPosition + i;
+                    BroadcastCard(ID, SpielerID);  //Karte broadcasten
                 }
 
                 StichListe.Add(CurStich);
@@ -63,13 +75,7 @@ namespace Doppelkopf_Server
 
         static void AblaufHochzeit()
         {
-            //TODO: Gemiensame Blöcke in Funktionen refactoren
-            StichListe = new List<Stich>();
-            Random RanInt = new Random((int)DateTime.Now.Ticks);
-            int SpPosition = RanInt.Next(4); //Zufällige Bestimmung des Startspielers!
-
-            BroadcastStartspieler(SpPosition);
-
+            int SpPosition = AblaufStarten();
             List<Spieler> Reihenfolge = new List<Spieler>();
             for (int Stichzahl = 0; Stichzahl < 12; Stichzahl++) //12 Stiche pro Spiel
             {

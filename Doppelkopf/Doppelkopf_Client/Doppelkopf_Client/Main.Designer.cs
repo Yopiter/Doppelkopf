@@ -201,6 +201,7 @@
             this.BT_K12.TabIndex = 31;
             this.BT_K12.UseVisualStyleBackColor = true;
             this.BT_K12.Visible = false;
+            this.BT_K12.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K11
             // 
@@ -210,6 +211,7 @@
             this.BT_K11.TabIndex = 29;
             this.BT_K11.UseVisualStyleBackColor = true;
             this.BT_K11.Visible = false;
+            this.BT_K11.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K10
             // 
@@ -219,6 +221,7 @@
             this.BT_K10.TabIndex = 32;
             this.BT_K10.UseVisualStyleBackColor = true;
             this.BT_K10.Visible = false;
+            this.BT_K10.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K9
             // 
@@ -228,6 +231,7 @@
             this.BT_K9.TabIndex = 30;
             this.BT_K9.UseVisualStyleBackColor = true;
             this.BT_K9.Visible = false;
+            this.BT_K9.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K8
             // 
@@ -237,6 +241,7 @@
             this.BT_K8.TabIndex = 28;
             this.BT_K8.UseVisualStyleBackColor = true;
             this.BT_K8.Visible = false;
+            this.BT_K8.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K7
             // 
@@ -246,6 +251,7 @@
             this.BT_K7.TabIndex = 33;
             this.BT_K7.UseVisualStyleBackColor = true;
             this.BT_K7.Visible = false;
+            this.BT_K7.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K6
             // 
@@ -255,6 +261,7 @@
             this.BT_K6.TabIndex = 34;
             this.BT_K6.UseVisualStyleBackColor = true;
             this.BT_K6.Visible = false;
+            this.BT_K6.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K5
             // 
@@ -264,6 +271,7 @@
             this.BT_K5.TabIndex = 35;
             this.BT_K5.UseVisualStyleBackColor = true;
             this.BT_K5.Visible = false;
+            this.BT_K5.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K4
             // 
@@ -273,6 +281,7 @@
             this.BT_K4.TabIndex = 36;
             this.BT_K4.UseVisualStyleBackColor = true;
             this.BT_K4.Visible = false;
+            this.BT_K4.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K3
             // 
@@ -282,6 +291,7 @@
             this.BT_K3.TabIndex = 37;
             this.BT_K3.UseVisualStyleBackColor = true;
             this.BT_K3.Visible = false;
+            this.BT_K3.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K2
             // 
@@ -291,6 +301,7 @@
             this.BT_K2.TabIndex = 38;
             this.BT_K2.UseVisualStyleBackColor = true;
             this.BT_K2.Visible = false;
+            this.BT_K2.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K1
             // 
@@ -300,6 +311,7 @@
             this.BT_K1.TabIndex = 27;
             this.BT_K1.UseVisualStyleBackColor = true;
             this.BT_K1.Visible = false;
+            this.BT_K1.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // pB_pl4
             // 

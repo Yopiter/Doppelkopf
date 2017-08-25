@@ -381,5 +381,20 @@ namespace Doppelkopf_Client
                     return " sagt einen unbekannten Spielmodus an, der schon lange zu einer Fehlermeldung hätte führen sollen. Bitte versuchen sie nicht mehr das Spiel zu hacken!";
             }
         }
+
+        private void BT_Karte_Click(object sender, EventArgs e)
+        {
+            if (!AmZug)
+            {
+                SetStatus("Du bist nicht dran...");
+                return;
+            }
+            Button Trigger = (Button)sender;
+            int Kartenposition = KartenButtons.IndexOf(Trigger);
+            //Karte auf Stichbutton übertragen
+            //Karte aus Kartenliste löschen
+            //Button aus ButtonListe löschen
+            //Button verschwinden lassen
+        }
     }
 }
