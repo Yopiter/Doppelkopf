@@ -28,7 +28,7 @@ namespace Doppelkopf_Server
 
         private int StärkeBerechnen(int farbWert, int wertigkeit)
         {
-            if (!(farbWert == 0 || id == 14 || id == 15 || wertigkeit == 3 || wertigkeit == 2)) return -1;
+            if (!(farbWert == 0 || id == 20 || id == 21 || wertigkeit == 3 || wertigkeit == 2)) return -1; //20 & 21 == Herz Zehn, höchster Trumpf im Spiel
             if (farbWert == 0 && wertigkeit != 2 && wertigkeit != 3)
             {
                 return wertigkeit;

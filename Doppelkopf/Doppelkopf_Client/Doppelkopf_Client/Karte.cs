@@ -29,7 +29,7 @@ namespace Doppelkopf_Client
 
         private int StärkeBerechnen(int farbWert, int wertigkeit)
         {
-            if (!(farbWert == 0 || id == 14 || id == 15 || wertigkeit == 3 || wertigkeit == 2)) return -1;
+            if (!(farbWert == 0 || id == 20 || id == 21 || wertigkeit == 3 || wertigkeit == 2)) return -1;
             if (farbWert == 0 && wertigkeit != 2 && wertigkeit != 3)
             {
                 return wertigkeit;

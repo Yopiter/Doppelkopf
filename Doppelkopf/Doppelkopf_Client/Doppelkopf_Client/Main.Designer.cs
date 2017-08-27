@@ -131,6 +131,7 @@
             this.LBL_Player3.BackColor = System.Drawing.SystemColors.Control;
             this.LBL_Player3.Location = new System.Drawing.Point(1141, 281);
             this.LBL_Player3.Name = "LBL_Player3";
+            this.LBL_Player3.ReadOnly = true;
             this.LBL_Player3.Size = new System.Drawing.Size(178, 20);
             this.LBL_Player3.TabIndex = 46;
             this.LBL_Player3.Text = "Spieler 3";
@@ -141,6 +142,7 @@
             this.LBL_Player1.BackColor = System.Drawing.SystemColors.Control;
             this.LBL_Player1.Location = new System.Drawing.Point(8, 343);
             this.LBL_Player1.Name = "LBL_Player1";
+            this.LBL_Player1.ReadOnly = true;
             this.LBL_Player1.Size = new System.Drawing.Size(178, 20);
             this.LBL_Player1.TabIndex = 45;
             this.LBL_Player1.Text = "Spieler 1";
@@ -327,6 +329,7 @@
             this.LBL_Player4.BackColor = System.Drawing.SystemColors.Control;
             this.LBL_Player4.Location = new System.Drawing.Point(561, 502);
             this.LBL_Player4.Name = "LBL_Player4";
+            this.LBL_Player4.ReadOnly = true;
             this.LBL_Player4.Size = new System.Drawing.Size(178, 20);
             this.LBL_Player4.TabIndex = 54;
             this.LBL_Player4.Text = "Spieler 4";
