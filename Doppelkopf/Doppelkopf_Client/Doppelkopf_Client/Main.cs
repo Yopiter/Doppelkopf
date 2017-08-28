@@ -20,6 +20,7 @@ namespace Doppelkopf_Client
         List<TextBox> LabelList;
 
         List<Karte> VerbleibendeKarten;
+        List<Karte> GesamtesDeck;
         List<Karte> Stiche;
 
         List<Spieler> SpielerListe;
@@ -100,6 +101,12 @@ namespace Doppelkopf_Client
                     case ("Du Du Du Du bist dran"):
                         Invoke((Func<BinaryReader, BinaryWriter, bool>)OnSelbstAmZug, r, w);
                         break;
+                    case ("gespielte_Karte"):
+                        Invoke((Func<BinaryReader, BinaryWriter, bool>)GespielteKarteLesen, r, w);
+                        break;
+                    case ("Stich_Punkte_und_Spieler"):
+                        Invoke((Func<BinaryReader, BinaryWriter, bool>)StichEntfernen, r, w);
+                        break;
                     default:
                         MessageBox.Show("Unbekannter Befehl: " + Nachricht);
                         break;
@@ -107,8 +114,33 @@ namespace Doppelkopf_Client
             }
         }
 
+        private bool StichEntfernen(BinaryReader r, BinaryWriter w)
+        {
+            w.Write(true);
+            int Stichpunkte = ReadInt64(r, w);
+            Spieler GingAn = SpielerListe[ReadInt64(r, w)];
+            SetStatus(string.Format("Stich mit {0} Punkten für {1}", Stichpunkte, GingAn.Name));
+            int i = 0;
+            foreach(Button B in LetzterStichButtons)
+            {
+                B.Image = StichButtons[i].Image;
+                StichButtons[i].Visible = false;
+                B.Visible = true;
+            }
+            return true;
+        }
+
+        private bool GespielteKarteLesen(BinaryReader r, BinaryWriter w)
+        {
+            w.Write(true);
+            int cardID = ReadInt64(r, w);
+            int SpielerID = ReadInt64(r, w);
+            SpielerListe[SpielerID].KarteLegenLassen(GesamtesDeck[cardID]);
+            return true;
+        }
+
         /// <summary>
-        /// Spieler muss Karte legen oder requiten.
+        /// Spieler muss Karte legen oder ragequiten.
         /// Verschiedene Situationen anhand des Spielmoduses unterscheiden
         /// </summary>
         /// <param name="r"></param>
@@ -229,6 +261,7 @@ namespace Doppelkopf_Client
         private bool GetKartenVonServer(BinaryReader r, BinaryWriter w)
         {
             List<Karte> Deck = DeckGenerieren();
+            GesamtesDeck = Deck;
             VerbleibendeKarten = new List<Karte>();
             w.Write(true); //Beginn der Kartenübertragung
             for (int kartenzahl = 0; kartenzahl < 12; kartenzahl++)
@@ -393,9 +426,18 @@ namespace Doppelkopf_Client
             Button Trigger = (Button)sender;
             int Kartenposition = KartenButtons.IndexOf(Trigger);
             //Karte auf Stichbutton übertragen
-            //Karte aus Kartenliste löschen
-            //Button aus ButtonListe löschen
-            //Button verschwinden lassen
+            Karte gespielteKarte = VerbleibendeKarten[Kartenposition];
+            VerbleibendeKarten.Remove(gespielteKarte);
+            KartenButtons.Remove(Trigger);
+            Trigger.Dispose();
+            KarteSpielen(gespielteKarte);
+        }
+
+        private void KarteSpielen(Karte curCard)
+        {
+            BinaryReader r = new BinaryReader(Server.GetStream());
+            BinaryWriter w = new BinaryWriter(Server.GetStream());
+            SendNumber(r, w, curCard.id);
         }
     }
 }
