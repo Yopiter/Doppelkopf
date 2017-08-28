@@ -94,6 +94,7 @@ namespace Doppelkopf_Client
         public void KarteLegenLassen(Karte K)
         {
             btKarte.Image = new Bitmap(K.GetImagePath());
+            btKarte.Visible = true;
             Kartenzahl--;
         }
     }

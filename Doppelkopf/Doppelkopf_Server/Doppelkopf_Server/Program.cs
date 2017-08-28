@@ -320,7 +320,7 @@ namespace Doppelkopf_Server
         {
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("Stich Punkte und Spieler");
+                sp.SendText("Stich_Punkte_und_Spieler");
                 sp.SendNumber(curStich.StichPunktwert);
                 sp.SendNumber(SpielerListe.IndexOf(curStich.SpielerGingAn));
             }
@@ -349,7 +349,7 @@ namespace Doppelkopf_Server
         {
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("gespielte Karte");
+                sp.SendText("gespielte_Karte");
                 sp.SendNumber(KartenID);
                 sp.SendNumber(SpielerID);
             }
