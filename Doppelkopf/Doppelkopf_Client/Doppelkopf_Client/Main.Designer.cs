@@ -195,27 +195,35 @@
             // 
             // BT_K12
             // 
+            this.BT_K12.FlatAppearance.BorderSize = 0;
             this.BT_K12.Location = new System.Drawing.Point(766, 530);
+            this.BT_K12.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K12.Name = "BT_K12";
             this.BT_K12.Size = new System.Drawing.Size(93, 140);
             this.BT_K12.TabIndex = 31;
+            this.BT_K12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BT_K12.UseVisualStyleBackColor = true;
             this.BT_K12.Visible = false;
             this.BT_K12.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K11
             // 
+            this.BT_K11.FlatAppearance.BorderSize = 0;
             this.BT_K11.Location = new System.Drawing.Point(736, 530);
+            this.BT_K11.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K11.Name = "BT_K11";
             this.BT_K11.Size = new System.Drawing.Size(93, 140);
             this.BT_K11.TabIndex = 29;
+            this.BT_K11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BT_K11.UseVisualStyleBackColor = true;
             this.BT_K11.Visible = false;
             this.BT_K11.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // BT_K10
             // 
+            this.BT_K10.FlatAppearance.BorderSize = 0;
             this.BT_K10.Location = new System.Drawing.Point(706, 530);
+            this.BT_K10.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K10.Name = "BT_K10";
             this.BT_K10.Size = new System.Drawing.Size(93, 140);
             this.BT_K10.TabIndex = 32;
@@ -225,7 +233,9 @@
             // 
             // BT_K9
             // 
+            this.BT_K9.FlatAppearance.BorderSize = 0;
             this.BT_K9.Location = new System.Drawing.Point(676, 530);
+            this.BT_K9.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K9.Name = "BT_K9";
             this.BT_K9.Size = new System.Drawing.Size(93, 140);
             this.BT_K9.TabIndex = 30;
@@ -235,7 +245,9 @@
             // 
             // BT_K8
             // 
+            this.BT_K8.FlatAppearance.BorderSize = 0;
             this.BT_K8.Location = new System.Drawing.Point(646, 530);
+            this.BT_K8.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K8.Name = "BT_K8";
             this.BT_K8.Size = new System.Drawing.Size(93, 140);
             this.BT_K8.TabIndex = 28;
@@ -245,7 +257,9 @@
             // 
             // BT_K7
             // 
+            this.BT_K7.FlatAppearance.BorderSize = 0;
             this.BT_K7.Location = new System.Drawing.Point(616, 530);
+            this.BT_K7.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K7.Name = "BT_K7";
             this.BT_K7.Size = new System.Drawing.Size(93, 140);
             this.BT_K7.TabIndex = 33;
@@ -255,7 +269,9 @@
             // 
             // BT_K6
             // 
+            this.BT_K6.FlatAppearance.BorderSize = 0;
             this.BT_K6.Location = new System.Drawing.Point(586, 530);
+            this.BT_K6.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K6.Name = "BT_K6";
             this.BT_K6.Size = new System.Drawing.Size(93, 140);
             this.BT_K6.TabIndex = 34;
@@ -265,7 +281,9 @@
             // 
             // BT_K5
             // 
+            this.BT_K5.FlatAppearance.BorderSize = 0;
             this.BT_K5.Location = new System.Drawing.Point(556, 530);
+            this.BT_K5.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K5.Name = "BT_K5";
             this.BT_K5.Size = new System.Drawing.Size(93, 140);
             this.BT_K5.TabIndex = 35;
@@ -275,7 +293,9 @@
             // 
             // BT_K4
             // 
+            this.BT_K4.FlatAppearance.BorderSize = 0;
             this.BT_K4.Location = new System.Drawing.Point(526, 530);
+            this.BT_K4.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K4.Name = "BT_K4";
             this.BT_K4.Size = new System.Drawing.Size(93, 140);
             this.BT_K4.TabIndex = 36;
@@ -285,7 +305,9 @@
             // 
             // BT_K3
             // 
+            this.BT_K3.FlatAppearance.BorderSize = 0;
             this.BT_K3.Location = new System.Drawing.Point(496, 530);
+            this.BT_K3.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K3.Name = "BT_K3";
             this.BT_K3.Size = new System.Drawing.Size(93, 140);
             this.BT_K3.TabIndex = 37;
@@ -295,7 +317,9 @@
             // 
             // BT_K2
             // 
+            this.BT_K2.FlatAppearance.BorderSize = 0;
             this.BT_K2.Location = new System.Drawing.Point(466, 530);
+            this.BT_K2.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K2.Name = "BT_K2";
             this.BT_K2.Size = new System.Drawing.Size(93, 140);
             this.BT_K2.TabIndex = 38;
@@ -305,13 +329,14 @@
             // 
             // BT_K1
             // 
+            this.BT_K1.FlatAppearance.BorderSize = 0;
             this.BT_K1.Location = new System.Drawing.Point(436, 530);
+            this.BT_K1.Margin = new System.Windows.Forms.Padding(0);
             this.BT_K1.Name = "BT_K1";
             this.BT_K1.Size = new System.Drawing.Size(93, 140);
-            this.BT_K1.TabIndex = 27;
+            this.BT_K1.TabIndex = 57;
             this.BT_K1.UseVisualStyleBackColor = true;
             this.BT_K1.Visible = false;
-            this.BT_K1.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // pB_pl4
             // 
@@ -347,6 +372,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1326, 712);
+            this.Controls.Add(this.BT_K1);
+            this.Controls.Add(this.BT_K2);
+            this.Controls.Add(this.BT_K3);
+            this.Controls.Add(this.BT_K4);
+            this.Controls.Add(this.BT_K5);
+            this.Controls.Add(this.BT_K6);
+            this.Controls.Add(this.BT_K7);
+            this.Controls.Add(this.BT_K8);
+            this.Controls.Add(this.BT_K9);
+            this.Controls.Add(this.BT_K10);
+            this.Controls.Add(this.BT_K11);
+            this.Controls.Add(this.BT_K12);
             this.Controls.Add(this.LbStatus);
             this.Controls.Add(this.pB_pl4);
             this.Controls.Add(this.LBL_Player4);
@@ -364,18 +401,6 @@
             this.Controls.Add(this.BT_Stich_3);
             this.Controls.Add(this.BT_Stich_2);
             this.Controls.Add(this.BT_Stich_1);
-            this.Controls.Add(this.BT_K12);
-            this.Controls.Add(this.BT_K11);
-            this.Controls.Add(this.BT_K10);
-            this.Controls.Add(this.BT_K9);
-            this.Controls.Add(this.BT_K8);
-            this.Controls.Add(this.BT_K7);
-            this.Controls.Add(this.BT_K6);
-            this.Controls.Add(this.BT_K5);
-            this.Controls.Add(this.BT_K4);
-            this.Controls.Add(this.BT_K3);
-            this.Controls.Add(this.BT_K2);
-            this.Controls.Add(this.BT_K1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Main";
             this.Text = "Form1";
