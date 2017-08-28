@@ -53,5 +53,11 @@ namespace Doppelkopf_Client
             CName = name;
             Close();
         }
+
+        private void TB_Name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                BT_Verb_Click(null, null);
+        }
     }
 }

@@ -46,6 +46,7 @@
             this.TB_Name.Size = new System.Drawing.Size(100, 20);
             this.TB_Name.TabIndex = 0;
             this.TB_Name.Text = "GenericName";
+            this.TB_Name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Name_KeyDown);
             // 
             // TB_IP
             // 
