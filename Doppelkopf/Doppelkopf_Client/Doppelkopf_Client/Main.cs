@@ -251,6 +251,7 @@ namespace Doppelkopf_Client
                 string path = Path.Combine(basepath, cardpath);
                 KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Image = Image.FromFile(path);
                 KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Visible = true;
+                KartenButtons[VerbleibendeKarten.IndexOf(curCard)].Refresh();
             }
         }
 
