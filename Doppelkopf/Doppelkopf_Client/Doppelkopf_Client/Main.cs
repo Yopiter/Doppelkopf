@@ -57,7 +57,13 @@ namespace Doppelkopf_Client
 
         private void SetupTableVariables()
         {
-            BackgroundImage = new Bitmap("Ress\\Background.jpg");
+            Image background;
+            using (var temporaryTmpVariable = new Bitmap("Ress\\Background.jpg"))
+            {
+                background = new Bitmap(temporaryTmpVariable);
+            }
+            BackgroundImage = background;
+
             KartenButtons = new List<Button> { BT_K1, BT_K2, BT_K3, BT_K4, BT_K5, BT_K6, BT_K7, BT_K8, BT_K9, BT_K10, BT_K11, BT_K12 };
             StichButtons = new List<Button> { BT_Stich_1, BT_Stich_2, BT_Stich_3, BT_Stich_4 };
             LetzterStichButtons = new List<Button> { BT_L_1, BT_L_2, BT_L_3, BT_L_4 };
