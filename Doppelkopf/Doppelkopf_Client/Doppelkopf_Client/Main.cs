@@ -423,6 +423,7 @@ namespace Doppelkopf_Client
                 SetStatus("Du bist nicht dran...");
                 return;
             }
+            AmZug = false;
             Button Trigger = (Button)sender;
             int Kartenposition = KartenButtons.IndexOf(Trigger);
             //Karte auf Stichbutton übertragen
