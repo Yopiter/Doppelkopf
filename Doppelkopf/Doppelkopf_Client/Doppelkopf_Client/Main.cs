@@ -149,6 +149,7 @@ namespace Doppelkopf_Client
         private bool OnSelbstAmZug(BinaryReader r, BinaryWriter w)
         {
             //TODO: Buttons mit nicht spielbaren Karten deaktivieren. Vertraue niemals einem Spieler in einem Online-Game
+            w.Write(true);
             SetStatus("Du bist dran!");
             AmZug = true;
             return true;
