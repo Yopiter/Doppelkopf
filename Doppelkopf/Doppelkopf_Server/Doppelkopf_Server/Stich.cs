@@ -32,10 +32,11 @@ namespace Doppelkopf_Server
 
         public void KarteGespielt(Karte GelegteKarte)
         {
-            KList.Add(GelegteKarte);
-            if (KList.Count == 1)
+            if (KList == null)
                 StartkarteDefinieren(GelegteKarte);
-
+            else
+                KList.Add(GelegteKarte);
+            
             if (KList.Count == 4)
                 SiegerBestimmen();
         }
