@@ -273,7 +273,7 @@ namespace Doppelkopf_Server
 
         private static void SpielmodusStarten()
         {
-            StichListe = new List<Stich>(); //TODO muss das hier initialisiert werden? //NOT-TO-DO: Ja, muss es :D
+            StichListe = new List<Stich>();
             switch (CurrentGame.gameMode)
             {
                 case (Spiel.Spielmodus.Normal):
@@ -336,7 +336,6 @@ namespace Doppelkopf_Server
                     sp.SendNumber(SpielerListe.IndexOf(Re)); //unbekannt viele, deshalb Abbruch mit -1
                 }
                 sp.SendNumber(-1);
-                sp.SendText("Endergebnis");
                 for (int i = 0; i < 4; i++)
                 {
                     sp.SendNumber(SpielerListe[i].Punktzahl);
@@ -378,7 +377,7 @@ namespace Doppelkopf_Server
 
         private static void BroadcastStartspieler(int spPosition)
         {
-            string nachricht=string.Format(GetRandomStringFromArrayOrList(NachrichtenListeStartspieler),SpielerListe[spPosition].Name);
+            string nachricht = string.Format(GetRandomStringFromArrayOrList(NachrichtenListeStartspieler), SpielerListe[spPosition].Name);
             BroadcastMessage(nachricht);
         }
         #endregion

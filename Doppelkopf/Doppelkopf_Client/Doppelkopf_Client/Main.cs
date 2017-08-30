@@ -10,7 +10,6 @@ namespace Doppelkopf_Client
 {
     public partial class Main : Form
     {
-        //TODO: Mouse_hover-Event für jede karte machen und nach oben rutschen lassen :D
         TcpClient Server;
         string PlName;
 
@@ -113,11 +112,46 @@ namespace Doppelkopf_Client
                     case ("Stich_Punkte_und_Spieler"):
                         Invoke((Func<BinaryReader, BinaryWriter, bool>)StichEntfernen, r, w);
                         break;
+                    case ("TeamRe"):
+                        Invoke((Func<BinaryReader, BinaryWriter, bool>)GetEndergebnis, r, w);
+                        break;
                     default:
                         MessageBox.Show("Unbekannter Befehl: " + Nachricht);
                         break;
                 }
             }
+        }
+
+        private bool GetEndergebnis(BinaryReader r, BinaryWriter w)
+        {
+            List<Spieler> TeamRe = new List<Spieler>();
+            while (true)
+            {
+                int i = ReadInt64(r, w);
+                if (i == -1) break;
+                TeamRe.Add(SpielerListe[i]);
+            }
+            int PunkteRe = 0;
+            string Team;
+            foreach (Spieler sp in SpielerListe)
+            {
+                sp.Punkte = ReadInt64(r, w);
+                if (TeamRe.Contains(sp))
+                {
+                    Team = "(Re)";
+                    PunkteRe += sp.Punkte;
+                }
+                else
+                {
+                    Team = "(Kontra)";
+                }
+                SetStatus(string.Format("{0} {1}: {2}", sp.Name, Team, sp.Punkte));
+            }
+            SetStatus("Punkte Re: " + PunkteRe);
+            SetStatus("Punkte Kontra: " + (120 - PunkteRe));
+            string SiegerTeam = PunkteRe > 60 ? "Re" : "Kontra";
+            SetStatus("Es gewinnt Team " + SiegerTeam);
+            return true;
         }
 
         private bool StichEntfernen(BinaryReader r, BinaryWriter w)
@@ -127,7 +161,7 @@ namespace Doppelkopf_Client
             Spieler GingAn = SpielerListe[ReadInt64(r, w)];
             SetStatus(string.Format("Stich mit {0} Punkten für {1}", Stichpunkte, GingAn.Name));
             int i = 0;
-            foreach(Button B in LetzterStichButtons)
+            foreach (Button B in LetzterStichButtons)
             {
                 B.Image = StichButtons[i].Image;
                 StichButtons[i].Visible = false;
@@ -433,7 +467,6 @@ namespace Doppelkopf_Client
             AmZug = false;
             Button Trigger = (Button)sender;
             int Kartenposition = KartenButtons.IndexOf(Trigger);
-            //Karte auf Stichbutton übertragen
             Karte gespielteKarte = VerbleibendeKarten[Kartenposition];
             VerbleibendeKarten.Remove(gespielteKarte);
             KartenButtons.Remove(Trigger);
@@ -446,6 +479,11 @@ namespace Doppelkopf_Client
             BinaryReader r = new BinaryReader(Server.GetStream());
             BinaryWriter w = new BinaryWriter(Server.GetStream());
             SendNumber(r, w, curCard.id);
+        }
+
+        private static Image GetImage(string path)
+        {
+
         }
     }
 }
