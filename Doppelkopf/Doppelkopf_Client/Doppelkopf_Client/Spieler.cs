@@ -33,18 +33,13 @@ namespace Doppelkopf_Client
         public PictureBox AddZustand(Zustand NeuerZustand)
         {
             PictureBox newBox = new PictureBox();
-            Image imageReContra;
             switch (NeuerZustand)
             {
                 case (Zustand.Re):
-                    using (var anotherTmpvalue = new Bitmap("Ress\\Icons\\re.png"))
-                        imageReContra = new Bitmap(anotherTmpvalue);
-                    newBox.Image = imageReContra;
+                    newBox.Image = Main.GetImage("Ress\\Icons\\re.png");
                     break;
                 case (Zustand.Kontra):
-                    using (var yetAnotherTmp = new Bitmap("Ress\\Icons\\contra.png"))
-                        imageReContra = new Bitmap(yetAnotherTmp);
-                    newBox.Image = imageReContra;
+                    newBox.Image = Main.GetImage("Ress\\Icons\\contra.png");
                     break;
                 default:
                     MessageBox.Show("Oh no, Player " + Name + " seems to be retarted. He thinks he can be " + NeuerZustand.ToString());
@@ -98,8 +93,7 @@ namespace Doppelkopf_Client
 
         public void KarteLegenLassen(Karte K)
         {
-            using (var hopefullyTheLastTmpVar = new Bitmap(K.GetImagePath()))
-                btKarte.Image = new Bitmap(hopefullyTheLastTmpVar);
+            btKarte.Image = Main.GetImage(K.GetImagePath());
             btKarte.Visible = true;
             Kartenzahl--;
         }

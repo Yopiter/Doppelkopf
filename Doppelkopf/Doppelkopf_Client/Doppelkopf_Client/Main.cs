@@ -481,9 +481,10 @@ namespace Doppelkopf_Client
             SendNumber(r, w, curCard.id);
         }
 
-        private static Image GetImage(string path)
+        public static Image GetImage(string path)
         {
-
+            using (var LastOfTheTempVars = new Bitmap(path))
+               return new Bitmap(LastOfTheTempVars);
         }
     }
 }
