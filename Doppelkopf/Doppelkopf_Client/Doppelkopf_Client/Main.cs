@@ -124,6 +124,7 @@ namespace Doppelkopf_Client
 
         private bool GetEndergebnis(BinaryReader r, BinaryWriter w)
         {
+            w.Write(true);
             List<Spieler> TeamRe = new List<Spieler>();
             while (true)
             {
