@@ -19,9 +19,29 @@ namespace Doppelkopf_Client
 
             farbe = (Farben) KFarbe;
             kartenWert = (Kartenwert) KWert;
-            
-            //TODO spezielle Kartennamen einbauen
-            kartenName = Enum.GetName(typeof(Farben), farbe) + " " + Enum.GetName(typeof(Kartenwert), kartenWert);
+
+            switch (id)
+            {
+                case (20):
+                case (21):
+                    kartenName = "Dulle";
+                    break;
+                case (42):
+                case (43):
+                    kartenName = "Alte";
+                    break;
+                case (40):
+                case (41):
+                    kartenName = "Karlchen";
+                    break;
+                case (10):
+                case (11):
+                    kartenName = "Fuchs";
+                    break;
+                default:
+                    kartenName = Enum.GetName(typeof(Farben), farbe) + " " + Enum.GetName(typeof(Kartenwert), kartenWert);
+                    break;
+            }
 
             trumpfstärke = StärkeBerechnen(KFarbe, KWert);
             punktzahl = PunkzahlBestimmung();
@@ -49,8 +69,7 @@ namespace Doppelkopf_Client
 
         public string GetImagePath()
         {
-            string bullshit = string.Format("Ress\\Karten_Template\\{0}\\{1}.png", (int)farbe, (int)kartenWert);
-            return bullshit;
+            return string.Format("Ress\\Karten_Template\\{0}\\{1}.png", (int)farbe, (int)kartenWert);
         }
     }
 }
