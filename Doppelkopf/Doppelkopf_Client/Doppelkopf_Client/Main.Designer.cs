@@ -28,20 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BT_L_4 = new System.Windows.Forms.Button();
-            this.BT_L_3 = new System.Windows.Forms.Button();
-            this.BT_L_2 = new System.Windows.Forms.Button();
-            this.BT_L_1 = new System.Windows.Forms.Button();
             this.pB_pl3 = new System.Windows.Forms.PictureBox();
             this.pB_pl2 = new System.Windows.Forms.PictureBox();
             this.pB_pl1 = new System.Windows.Forms.PictureBox();
             this.LBL_Player3 = new System.Windows.Forms.TextBox();
             this.LBL_Player1 = new System.Windows.Forms.TextBox();
             this.LBL_Player2 = new System.Windows.Forms.TextBox();
-            this.BT_Stich_4 = new System.Windows.Forms.Button();
             this.BT_Stich_3 = new System.Windows.Forms.Button();
             this.BT_Stich_2 = new System.Windows.Forms.Button();
             this.BT_Stich_1 = new System.Windows.Forms.Button();
+            this.BT_Stich_4 = new System.Windows.Forms.Button();
             this.BT_K12 = new System.Windows.Forms.Button();
             this.BT_K11 = new System.Windows.Forms.Button();
             this.BT_K10 = new System.Windows.Forms.Button();
@@ -57,47 +53,19 @@
             this.pB_pl4 = new System.Windows.Forms.PictureBox();
             this.LBL_Player4 = new System.Windows.Forms.TextBox();
             this.LbStatus = new System.Windows.Forms.Label();
+            this.PB_L_4 = new System.Windows.Forms.PictureBox();
+            this.PB_L_1 = new System.Windows.Forms.PictureBox();
+            this.PB_L_2 = new System.Windows.Forms.PictureBox();
+            this.PB_L_3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // BT_L_4
-            // 
-            this.BT_L_4.Location = new System.Drawing.Point(78, 552);
-            this.BT_L_4.Name = "BT_L_4";
-            this.BT_L_4.Size = new System.Drawing.Size(61, 97);
-            this.BT_L_4.TabIndex = 51;
-            this.BT_L_4.UseVisualStyleBackColor = true;
-            this.BT_L_4.Visible = false;
-            // 
-            // BT_L_3
-            // 
-            this.BT_L_3.Location = new System.Drawing.Point(54, 530);
-            this.BT_L_3.Name = "BT_L_3";
-            this.BT_L_3.Size = new System.Drawing.Size(61, 97);
-            this.BT_L_3.TabIndex = 53;
-            this.BT_L_3.UseVisualStyleBackColor = true;
-            this.BT_L_3.Visible = false;
-            // 
-            // BT_L_2
-            // 
-            this.BT_L_2.Location = new System.Drawing.Point(31, 552);
-            this.BT_L_2.Name = "BT_L_2";
-            this.BT_L_2.Size = new System.Drawing.Size(61, 97);
-            this.BT_L_2.TabIndex = 50;
-            this.BT_L_2.UseVisualStyleBackColor = true;
-            this.BT_L_2.Visible = false;
-            // 
-            // BT_L_1
-            // 
-            this.BT_L_1.Location = new System.Drawing.Point(54, 572);
-            this.BT_L_1.Name = "BT_L_1";
-            this.BT_L_1.Size = new System.Drawing.Size(61, 97);
-            this.BT_L_1.TabIndex = 52;
-            this.BT_L_1.UseVisualStyleBackColor = true;
-            this.BT_L_1.Visible = false;
             // 
             // pB_pl3
             // 
@@ -159,41 +127,41 @@
             this.LBL_Player2.Text = "Spieler 2";
             this.LBL_Player2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // BT_Stich_4
-            // 
-            this.BT_Stich_4.Location = new System.Drawing.Point(635, 187);
-            this.BT_Stich_4.Name = "BT_Stich_4";
-            this.BT_Stich_4.Size = new System.Drawing.Size(133, 193);
-            this.BT_Stich_4.TabIndex = 41;
-            this.BT_Stich_4.UseVisualStyleBackColor = true;
-            this.BT_Stich_4.Visible = false;
-            // 
             // BT_Stich_3
             // 
-            this.BT_Stich_3.Location = new System.Drawing.Point(585, 152);
+            this.BT_Stich_3.Location = new System.Drawing.Point(646, 187);
             this.BT_Stich_3.Name = "BT_Stich_3";
-            this.BT_Stich_3.Size = new System.Drawing.Size(133, 193);
-            this.BT_Stich_3.TabIndex = 43;
+            this.BT_Stich_3.Size = new System.Drawing.Size(93, 140);
+            this.BT_Stich_3.TabIndex = 41;
             this.BT_Stich_3.UseVisualStyleBackColor = true;
             this.BT_Stich_3.Visible = false;
             // 
             // BT_Stich_2
             // 
-            this.BT_Stich_2.Location = new System.Drawing.Point(536, 187);
+            this.BT_Stich_2.Location = new System.Drawing.Point(572, 131);
             this.BT_Stich_2.Name = "BT_Stich_2";
-            this.BT_Stich_2.Size = new System.Drawing.Size(133, 193);
-            this.BT_Stich_2.TabIndex = 40;
+            this.BT_Stich_2.Size = new System.Drawing.Size(93, 140);
+            this.BT_Stich_2.TabIndex = 43;
             this.BT_Stich_2.UseVisualStyleBackColor = true;
             this.BT_Stich_2.Visible = false;
             // 
             // BT_Stich_1
             // 
-            this.BT_Stich_1.Location = new System.Drawing.Point(585, 227);
+            this.BT_Stich_1.Location = new System.Drawing.Point(496, 187);
             this.BT_Stich_1.Name = "BT_Stich_1";
-            this.BT_Stich_1.Size = new System.Drawing.Size(133, 193);
-            this.BT_Stich_1.TabIndex = 42;
+            this.BT_Stich_1.Size = new System.Drawing.Size(93, 140);
+            this.BT_Stich_1.TabIndex = 40;
             this.BT_Stich_1.UseVisualStyleBackColor = true;
             this.BT_Stich_1.Visible = false;
+            // 
+            // BT_Stich_4
+            // 
+            this.BT_Stich_4.Location = new System.Drawing.Point(586, 260);
+            this.BT_Stich_4.Name = "BT_Stich_4";
+            this.BT_Stich_4.Size = new System.Drawing.Size(93, 140);
+            this.BT_Stich_4.TabIndex = 42;
+            this.BT_Stich_4.UseVisualStyleBackColor = true;
+            this.BT_Stich_4.Visible = false;
             // 
             // BT_K12
             // 
@@ -370,11 +338,55 @@
             this.LbStatus.TabIndex = 56;
             this.LbStatus.Text = "Status";
             // 
+            // PB_L_4
+            // 
+            this.PB_L_4.BackColor = System.Drawing.Color.Transparent;
+            this.PB_L_4.Location = new System.Drawing.Point(53, 577);
+            this.PB_L_4.Name = "PB_L_4";
+            this.PB_L_4.Size = new System.Drawing.Size(62, 93);
+            this.PB_L_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PB_L_4.TabIndex = 58;
+            this.PB_L_4.TabStop = false;
+            // 
+            // PB_L_1
+            // 
+            this.PB_L_1.BackColor = System.Drawing.Color.Transparent;
+            this.PB_L_1.Location = new System.Drawing.Point(8, 550);
+            this.PB_L_1.Name = "PB_L_1";
+            this.PB_L_1.Size = new System.Drawing.Size(62, 93);
+            this.PB_L_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PB_L_1.TabIndex = 59;
+            this.PB_L_1.TabStop = false;
+            // 
+            // PB_L_2
+            // 
+            this.PB_L_2.BackColor = System.Drawing.Color.Transparent;
+            this.PB_L_2.Location = new System.Drawing.Point(63, 514);
+            this.PB_L_2.Name = "PB_L_2";
+            this.PB_L_2.Size = new System.Drawing.Size(62, 93);
+            this.PB_L_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PB_L_2.TabIndex = 60;
+            this.PB_L_2.TabStop = false;
+            // 
+            // PB_L_3
+            // 
+            this.PB_L_3.BackColor = System.Drawing.Color.Transparent;
+            this.PB_L_3.Location = new System.Drawing.Point(100, 560);
+            this.PB_L_3.Name = "PB_L_3";
+            this.PB_L_3.Size = new System.Drawing.Size(62, 93);
+            this.PB_L_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PB_L_3.TabIndex = 61;
+            this.PB_L_3.TabStop = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1326, 712);
+            this.Controls.Add(this.PB_L_3);
+            this.Controls.Add(this.PB_L_2);
+            this.Controls.Add(this.PB_L_1);
+            this.Controls.Add(this.PB_L_4);
             this.Controls.Add(this.BT_K1);
             this.Controls.Add(this.BT_K2);
             this.Controls.Add(this.BT_K3);
@@ -390,20 +402,16 @@
             this.Controls.Add(this.LbStatus);
             this.Controls.Add(this.pB_pl4);
             this.Controls.Add(this.LBL_Player4);
-            this.Controls.Add(this.BT_L_1);
-            this.Controls.Add(this.BT_L_4);
-            this.Controls.Add(this.BT_L_3);
-            this.Controls.Add(this.BT_L_2);
             this.Controls.Add(this.pB_pl3);
             this.Controls.Add(this.pB_pl2);
             this.Controls.Add(this.pB_pl1);
             this.Controls.Add(this.LBL_Player3);
             this.Controls.Add(this.LBL_Player1);
             this.Controls.Add(this.LBL_Player2);
-            this.Controls.Add(this.BT_Stich_4);
             this.Controls.Add(this.BT_Stich_3);
             this.Controls.Add(this.BT_Stich_2);
             this.Controls.Add(this.BT_Stich_1);
+            this.Controls.Add(this.BT_Stich_4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Main";
             this.Text = "Form1";
@@ -411,27 +419,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_pl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_L_3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button BT_L_4;
-        private System.Windows.Forms.Button BT_L_3;
-        private System.Windows.Forms.Button BT_L_2;
-        private System.Windows.Forms.Button BT_L_1;
         private System.Windows.Forms.PictureBox pB_pl3;
         private System.Windows.Forms.PictureBox pB_pl2;
         private System.Windows.Forms.PictureBox pB_pl1;
         private System.Windows.Forms.TextBox LBL_Player3;
         private System.Windows.Forms.TextBox LBL_Player1;
         private System.Windows.Forms.TextBox LBL_Player2;
-        private System.Windows.Forms.Button BT_Stich_4;
         private System.Windows.Forms.Button BT_Stich_3;
         private System.Windows.Forms.Button BT_Stich_2;
         private System.Windows.Forms.Button BT_Stich_1;
+        private System.Windows.Forms.Button BT_Stich_4;
         private System.Windows.Forms.Button BT_K12;
         private System.Windows.Forms.Button BT_K11;
         private System.Windows.Forms.Button BT_K10;
@@ -447,6 +454,10 @@
         private System.Windows.Forms.PictureBox pB_pl4;
         private System.Windows.Forms.TextBox LBL_Player4;
         private System.Windows.Forms.Label LbStatus;
+        private System.Windows.Forms.PictureBox PB_L_4;
+        private System.Windows.Forms.PictureBox PB_L_1;
+        private System.Windows.Forms.PictureBox PB_L_2;
+        private System.Windows.Forms.PictureBox PB_L_3;
     }
 }
 

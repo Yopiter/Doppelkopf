@@ -15,12 +15,11 @@ namespace Doppelkopf_Client
 
         List<Button> KartenButtons;
         List<Button> StichButtons;
-        List<Button> LetzterStichButtons;
+        List<PictureBox> LetzterStichBoxes;
         List<TextBox> LabelList;
 
         List<Karte> VerbleibendeKarten;
         List<Karte> GesamtesDeck;
-        List<Karte> Stiche;
 
         List<Spieler> SpielerListe;
 
@@ -31,7 +30,7 @@ namespace Doppelkopf_Client
 
         Spielmodus FinalerModus;
         #region KonstantenUndZeugs
-        private const int STATUS_NACHRICHTENLÄNGE = 20;
+        private const int STATUS_NACHRICHTENLÄNGE = 40;
         private const int STATUS_NACHRICHTENANZAHL = 8;
         int picBoxBreite = 74;
         int picBoxHoehe = 56;
@@ -65,7 +64,7 @@ namespace Doppelkopf_Client
 
             KartenButtons = new List<Button> { BT_K1, BT_K2, BT_K3, BT_K4, BT_K5, BT_K6, BT_K7, BT_K8, BT_K9, BT_K10, BT_K11, BT_K12 };
             StichButtons = new List<Button> { BT_Stich_1, BT_Stich_2, BT_Stich_3, BT_Stich_4 };
-            LetzterStichButtons = new List<Button> { BT_L_1, BT_L_2, BT_L_3, BT_L_4 };
+            LetzterStichBoxes = new List<PictureBox> { PB_L_1, PB_L_2, PB_L_3, PB_L_4 };
             LabelList = new List<TextBox> { LBL_Player1, LBL_Player2, LBL_Player3, LBL_Player4 };
             SpielerListe = new List<Spieler>() { null, null, null, null };
             StatusList = new List<string>() { "Spielverlauf" };
@@ -106,7 +105,7 @@ namespace Doppelkopf_Client
                     case ("Du Du Du Du bist dran"):
                         Invoke((Func<BinaryReader, BinaryWriter, bool>)OnSelbstAmZug, r, w);
                         break;
-                    case ("gespielte_Karte"):
+                    case ("g"):
                         Invoke((Func<BinaryReader, BinaryWriter, bool>)GespielteKarteLesen, r, w);
                         break;
                     case ("Stich_Punkte_und_Spieler"):
@@ -117,6 +116,7 @@ namespace Doppelkopf_Client
                         break;
                     default:
                         MessageBox.Show("Unbekannter Befehl: " + Nachricht);
+                        w.Write(true);
                         break;
                 }
             }
@@ -162,11 +162,12 @@ namespace Doppelkopf_Client
             Spieler GingAn = SpielerListe[ReadInt64(r, w)];
             SetStatus(string.Format("Stich mit {0} Punkten für {1}", Stichpunkte, GingAn.Name));
             int i = 0;
-            foreach (Button B in LetzterStichButtons)
+            foreach (PictureBox B in LetzterStichBoxes)
             {
                 B.Image = StichButtons[i].Image;
                 StichButtons[i].Visible = false;
                 B.Visible = true;
+                i++;
             }
             return true;
         }
@@ -386,7 +387,7 @@ namespace Doppelkopf_Client
             {
                 sp.tbLabel.Text = sp.Name;
             }
-            return true; //useless, aber BeginInvoke will es so :/
+            return true;
         }
 
         private string ReadString(BinaryReader r, BinaryWriter w)
@@ -485,7 +486,7 @@ namespace Doppelkopf_Client
         public static Image GetImage(string path)
         {
             using (var LastOfTheTempVars = new Bitmap(path))
-               return new Bitmap(LastOfTheTempVars);
+                return new Bitmap(LastOfTheTempVars);
         }
     }
 }

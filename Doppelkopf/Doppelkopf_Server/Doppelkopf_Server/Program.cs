@@ -147,6 +147,7 @@ namespace Doppelkopf_Server
             {
                 HandkartenAnSpielerSenden(sp.Handkarten, sp);
             }
+            DeckGenerieren();
         }
 
         /// <summary>
@@ -348,7 +349,7 @@ namespace Doppelkopf_Server
         {
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("gespielte_Karte");
+                sp.SendText("g"); //Problem bei dem, der selbst die Karte gespielt hat Oo
                 sp.SendNumber(KartenID);
                 sp.SendNumber(SpielerID);
             }
@@ -377,7 +378,8 @@ namespace Doppelkopf_Server
 
         private static void BroadcastStartspieler(int spPosition)
         {
-            string nachricht = string.Format(GetRandomStringFromArrayOrList(NachrichtenListeStartspieler), SpielerListe[spPosition].Name);
+            string Vorlage = GetRandomStringFromArrayOrList(NachrichtenListeStartspieler);
+            string nachricht = string.Format(Vorlage, SpielerListe[spPosition].Name);
             BroadcastMessage(nachricht);
         }
         #endregion
