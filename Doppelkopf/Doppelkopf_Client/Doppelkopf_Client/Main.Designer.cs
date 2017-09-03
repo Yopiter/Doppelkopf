@@ -307,6 +307,7 @@
             this.BT_K1.TabIndex = 57;
             this.BT_K1.UseVisualStyleBackColor = true;
             this.BT_K1.Visible = false;
+            this.BT_K2.Click += new System.EventHandler(this.BT_Karte_Click);
             // 
             // pB_pl4
             // 
@@ -331,8 +332,8 @@
             // LbStatus
             // 
             this.LbStatus.AutoSize = true;
-            this.LbStatus.ForeColor = System.Drawing.Color.White;
-            this.LbStatus.Location = new System.Drawing.Point(889, 431);
+            this.LbStatus.ForeColor = System.Drawing.Color.Black;
+            this.LbStatus.Location = new System.Drawing.Point(1042, 483);
             this.LbStatus.Name = "LbStatus";
             this.LbStatus.Size = new System.Drawing.Size(37, 13);
             this.LbStatus.TabIndex = 56;
@@ -347,6 +348,7 @@
             this.PB_L_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PB_L_4.TabIndex = 58;
             this.PB_L_4.TabStop = false;
+            this.PB_L_4.Visible = false;
             // 
             // PB_L_1
             // 
@@ -357,6 +359,7 @@
             this.PB_L_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PB_L_1.TabIndex = 59;
             this.PB_L_1.TabStop = false;
+            this.PB_L_1.Visible = false;
             // 
             // PB_L_2
             // 
@@ -367,6 +370,7 @@
             this.PB_L_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PB_L_2.TabIndex = 60;
             this.PB_L_2.TabStop = false;
+            this.PB_L_2.Visible = false;
             // 
             // PB_L_3
             // 
@@ -377,6 +381,7 @@
             this.PB_L_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PB_L_3.TabIndex = 61;
             this.PB_L_3.TabStop = false;
+            this.PB_L_3.Visible = false;
             // 
             // Main
             // 

@@ -114,12 +114,23 @@ namespace Doppelkopf_Client
                     case ("TeamRe"):
                         Invoke((Func<BinaryReader, BinaryWriter, bool>)GetEndergebnis, r, w);
                         break;
+                    case ("Hochzeitspaar <3"):
+                        Invoke((Func<BinaryReader, BinaryWriter, bool>)GetHochzeitspartner, r, w);
+                        break;
                     default:
                         MessageBox.Show("Unbekannter Befehl: " + Nachricht);
                         w.Write(true);
                         break;
                 }
             }
+        }
+
+        private bool GetHochzeitspartner(BinaryReader r, BinaryWriter w)
+        {
+            w.Write(true);
+            Spieler Braut = SpielerListe[ReadInt64(r, w)];
+            Controls.Add(Braut.AddZustand(Zustand.HochzeitOhneAlte));
+            return true;
         }
 
         private bool GetEndergebnis(BinaryReader r, BinaryWriter w)
@@ -233,7 +244,7 @@ namespace Doppelkopf_Client
                     break;
                 case (Spielmodus.Hochzeit):
                     MessageBox.Show(string.Format("Spieler {0} spielt eine Hochzeit.", Spielender.Name));
-                    Spielender.AddZustand(Zustand.HochzeitAlte);
+                    Controls.Add(Spielender.AddZustand(Zustand.HochzeitAlte));
                     break;
                 default:
                     ProgrammMitFehlerBeenden("Es wird ein Spielmodus gespielt, der noch nicht erfunden wurde. Der Verdacht auf Zeitreisende wurde bestätigt.");
