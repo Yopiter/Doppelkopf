@@ -17,8 +17,13 @@ namespace Doppelkopf_Server
         const string ANSWER_SUCCESS = "Roger Roger"; //DLL
         const string ANSWER_FAILIURE = "Move bitch get out the way.";//DLL
 
+        #region configVariablen
+        static bool HochzeitOnly = false; //nur Hochzeiten oder stille Soli geben beim Generieren der Karten
+        #endregion
+
         static void Main(string[] args)
         {
+            LoadConfig("server.conf");
             //Manual für Spackos
             Console.WriteLine("NICHT SCHLIESßEN! Bitte lies das, bevor du den Server minimierst und vergist!!");
             Console.WriteLine("Um diesen Server zu nutzen, musst du im Folgenden bitte 2 (in Worten: Zwei) Eingaben tätigen oder wenigstens 2 Mal Enter drücken.");
@@ -27,15 +32,19 @@ namespace Doppelkopf_Server
             Console.WriteLine("Vielen Dank für ihre Aufmerksamkeit.");
             Console.WriteLine("MfG, ihr Entwicklerteam");
             //Initialisiere Server
-            Console.WriteLine("Geben sie eine IP-Adresse an oder lassen sie die Eingabe frei, um auf beliebigen IPs zu hören.");
-            string ipString = Console.ReadLine();
-            ServerIP = ipString == "" ? IPAddress.Any : IPAddress.Parse(ipString);
-            Console.WriteLine("Geben sie den zu verwendenden Port an oder geben sie nichts ein, um den Standardport 666 zu verwenden.");
-            string portString = Console.ReadLine();
-            PortNummer = portString == "" ? 666 : int.Parse(portString);
-
+            if (ServerIP == null)
+            {
+                Console.WriteLine("Geben sie eine IP-Adresse an oder lassen sie die Eingabe frei, um auf beliebigen IPs zu hören.");
+                string ipString = Console.ReadLine();
+                ServerIP = ipString == "" ? IPAddress.Any : IPAddress.Parse(ipString);
+            }
+            if (PortNummer == 0)
+            {
+                Console.WriteLine("Geben sie den zu verwendenden Port an oder geben sie nichts ein, um den Standardport 666 zu verwenden.");
+                string portString = Console.ReadLine();
+                PortNummer = portString == "" ? 666 : int.Parse(portString);
+            }
             //Verbindungsaufbau
-            DeckGenerieren();
             GetSpielerAnmeldungen();
 
             Console.WriteLine("Alle Spieler sind dem Spiel beigetreten.");
@@ -62,6 +71,54 @@ namespace Doppelkopf_Server
                     newCard = new Karte(Farbe, Wert, 1);
                     Deck.Add(newCard);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Lädt Einstellungen (Who would have guessed)
+        /// </summary>
+        private static void LoadConfig(string ConfName)
+        {
+            try
+            {
+                if (!File.Exists(ConfName))
+                {
+                    File.Create(ConfName);
+                    Console.WriteLine("Config-Datei wurde erstellt: " + ConfName);
+                }
+                string[] confString = File.ReadAllLines(ConfName);
+                foreach (string zeile in confString)
+                {
+                    if (zeile[0] == '#') continue; //such professional
+                    string[] components = zeile.Split('=');
+                    if (components.Length != 2)
+                    {
+                        Console.WriteLine("Config-Zeile kann nicht gelesen werden: " + zeile);
+                        continue;
+                    }
+                    switch (components[0].Trim().ToLower())
+                    {
+                        case ("hochzeitonly"):
+                            HochzeitOnly = components[1].Trim() == "1" ? true : false;
+                            Console.WriteLine(HochzeitOnly ? "HochzeitOnly wurde aktiviert. Lasst die Zeremonien beginnen!" : "HochzeitOnly wurde deaktiviert. Die Kartenverteilung wird nicht mehr beeinflusst.");
+                            break;
+                        case ("ip"):
+                            string IP = components[1].ToLower();
+                            ServerIP = IP == "any" ? IPAddress.Any : IPAddress.Parse(IP);
+                            Console.WriteLine("Konfiguration gelesen. Es wird auf folgender IP gehört: " + IP);
+                            break;
+                        case ("port"):
+                            Console.WriteLine(int.TryParse(components[1], out PortNummer) ? "Portnummer ist " + PortNummer : "Port konnte nicht gelesen werden: " + components[1]);
+                            break;
+                        default:
+                            Console.WriteLine("Unbekannter Config-Parameter: " + components[0]);
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fehler beim Laden der Konfiguration: " + ex.Message);
             }
         }
 
@@ -137,17 +194,52 @@ namespace Doppelkopf_Server
         /// </summary>
         private static void KartenAusgeben()
         {
+            DeckGenerieren();
             for (int i = 0; i < 3; i++)
             {
                 SpielerListe[i].Handkarten = GetRandomHandkarten();
             }
             SpielerListe[3].Handkarten = Deck;
 
+            if (HochzeitOnly && !IsHochzeit()) //Neu generieren wenn keine Hochzeits-Hand dabei ist
+            {
+                KartenAusgeben();
+                return;
+            }
+
             foreach (Spieler sp in SpielerListe)
             {
                 HandkartenAnSpielerSenden(sp.Handkarten, sp);
             }
             DeckGenerieren();
+        }
+
+        private static bool IsHochzeit()
+        {
+            foreach (Spieler sp in SpielerListe)
+            {
+                int AnzahlAlte = 0;
+                foreach (Karte K in sp.Handkarten)
+                {
+                    if (K.IstAlte())
+                    {
+                        if (AnzahlAlte == 1)
+                        {
+                            return true; //Hat 2 Alte
+                        }
+                        else
+                        {
+                            AnzahlAlte = 1;
+                        }
+                    }
+                }
+                if (AnzahlAlte == 1)
+                {
+                    return false; //Hat genau eine Alte -> niemand anders kann beide haben
+                }
+            }
+            Console.WriteLine("Das hätte nie passieren dürfen. Anscheinend hatte keiner der Spieler eine Alte Oo");
+            return false;
         }
 
         /// <summary>
@@ -321,7 +413,7 @@ namespace Doppelkopf_Server
         {
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("Stich_Punkte_und_Spieler");
+                sp.SendText("Stich_Punkte_und_Spieler"); //DLL
                 sp.SendNumber(curStich.StichPunktwert);
                 sp.SendNumber(SpielerListe.IndexOf(curStich.SpielerGingAn));
             }
@@ -331,7 +423,7 @@ namespace Doppelkopf_Server
         {
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("TeamRe");
+                sp.SendText("TeamRe"); //DLL
                 foreach (Spieler Re in CurrentGame.TeamRe)
                 {
                     sp.SendNumber(SpielerListe.IndexOf(Re)); //unbekannt viele, deshalb Abbruch mit -1
@@ -349,7 +441,7 @@ namespace Doppelkopf_Server
         {
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("g"); //Problem bei dem, der selbst die Karte gespielt hat Oo
+                sp.SendText("g"); //Problem bei dem, der selbst die Karte gespielt hat Oo //DLL
                 sp.SendNumber(KartenID);
                 sp.SendNumber(SpielerID);
             }
@@ -359,20 +451,19 @@ namespace Doppelkopf_Server
         {
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("NachrichtVomServer");
+                sp.SendText("NachrichtVomServer"); //DLL
                 sp.SendText(Message);
             }
         }
 
-        private static void BroadcastHochzeit()
+        private static void BroadcastHochzeit(Spieler NewMate)
         {
             string Nachricht = string.Format(GetRandomStringFromArrayOrList(NachrichtenListeHochzeit), CurrentGame.TeamRe[0].Name, CurrentGame.TeamRe[1].Name);
             BroadcastMessage(GetRandomStringFromArrayOrList(ServerSendeSprueche) + Nachricht);
             foreach (Spieler sp in SpielerListe)
             {
-                sp.SendText("Hochzeitspaar <3");
-                sp.SendNumber(SpielerListe.IndexOf(CurrentGame.TeamRe[0]));
-                sp.SendNumber(SpielerListe.IndexOf(CurrentGame.TeamRe[2]));
+                sp.SendText("Hochzeitspaar <3"); //DLL
+                sp.SendNumber(SpielerListe.IndexOf(NewMate));
             }
         }
 

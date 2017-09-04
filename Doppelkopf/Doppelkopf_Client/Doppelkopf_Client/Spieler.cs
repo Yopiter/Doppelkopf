@@ -41,11 +41,18 @@ namespace Doppelkopf_Client
                 case (Zustand.Kontra):
                     newBox.Image = Main.GetImage("Ress\\Icons\\contra.png");
                     break;
+                case (Zustand.HochzeitAlte):
+                    newBox.Image = Main.GetImage("Ress\\Icons\\Braut.png");
+                    break;
+                case (Zustand.HochzeitOhneAlte):
+                    newBox.Image = Main.GetImage("Ress\\Icons\\Brautpaar.png");
+                    break;
                 default:
                     MessageBox.Show("Oh no, Player " + Name + " seems to be retarted. He thinks he can be " + NeuerZustand.ToString());
                     break;
             }
             newBox.Location = GetPositionFuerNeuePicBox();
+            newBox.SizeMode = PictureBoxSizeMode.Zoom;
             Zustandsboxen.Add(newBox);
             ZustandsList.Add(NeuerZustand);
             return newBox;
