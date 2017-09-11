@@ -201,7 +201,6 @@ namespace Doppelkopf_Client
         /// <returns></returns>
         private bool OnSelbstAmZug(BinaryReader r, BinaryWriter w)
         {
-            //TODO: Buttons mit nicht spielbaren Karten deaktivieren. Vertraue niemals einem Spieler in einem Online-Game
             w.Write(true);
             SetStatus("Du bist dran!");
             AmZug = true;
@@ -481,9 +480,11 @@ namespace Doppelkopf_Client
             Button Trigger = (Button)sender;
             int Kartenposition = KartenButtons.IndexOf(Trigger);
             Karte gespielteKarte = VerbleibendeKarten[Kartenposition];
+
             VerbleibendeKarten.Remove(gespielteKarte);
             KartenButtons.Remove(Trigger);
             Trigger.Dispose();
+
             KarteSpielen(gespielteKarte);
         }
 
