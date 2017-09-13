@@ -159,10 +159,24 @@ namespace Doppelkopf_Client
                 }
                 SetStatus(string.Format("{0} {1}: {2}", sp.Name, Team, sp.Punkte));
             }
+            
             SetStatus("Punkte Re: " + PunkteRe);
             SetStatus("Punkte Kontra: " + (120 - PunkteRe));
             string SiegerTeam = PunkteRe > 60 ? "Re" : "Kontra";
             SetStatus("Es gewinnt Team " + SiegerTeam);
+
+            switch (FinalerModus) //TODO: In stringlisten umwandeln und randomisiert anzeigen! Außerdem: DLL
+            {
+                case (Spielmodus.Hochzeit):
+                    SetStatus("Die Zeit der Trennung ist gekommen. Spacko 1 und Spacko 2 haben die formale Scheidung eingereicht...");
+                    break;
+                case (Spielmodus.Normal):
+                    SetStatus("Wieder mal ein normales Spiel vorbei. Profitipp: Ihr könntet auch mal einen interessanteren Modus spielen.");
+                    break;
+                case (Spielmodus.StillesSolo):
+                    SetStatus("Vielen Dank für ihren Einkauf bei MüSchn Unlmtd. GbmH und Co. AF. Holen sie sich neben dem 'Forever Alone'-DLC für das Stille Solo doch auch das neue 'I am a proud retard'-Paket für Spielmodi wie 'ohne Neunen' und 'Grand Hand Ouvert'!");
+                    break;
+            }
             return true;
         }
 
