@@ -128,7 +128,7 @@ namespace Doppelkopf_Server
 
         static void AblaufStillesSolo()
         {
-            throw new NotImplementedException("Stilles Solo noch nicht verfügbar. Bitte besuchen sie unseren Shop und bestellen sie das Solo-DLC 'Forever Alone' vor, um diesen Spielmodus (eventuell) freizuschalten. (Wenn martin Faul ist passiert aber nichts und Ihr Geld ist weg! *Duh*)");
+            AblaufNormal();
         }
     }
 }
