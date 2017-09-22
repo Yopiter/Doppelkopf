@@ -17,8 +17,8 @@ namespace Doppelkopf_Client
         {
             id = 12 * KFarbe + 2 * KWert + edition;
 
-            farbe = (Farben) KFarbe;
-            kartenWert = (Kartenwert) KWert;
+            farbe = (Farben)KFarbe;
+            kartenWert = (Kartenwert)KWert;
 
             switch (id)
             {
@@ -70,6 +70,12 @@ namespace Doppelkopf_Client
         public string GetImagePath()
         {
             return string.Format("Ress\\Karten_Template\\{0}\\{1}.png", (int)farbe, (int)kartenWert);
+        }
+
+        internal bool IsValid(Farben stichfarbe, bool Trumped)
+        {
+            bool ThisIsATrumpf = trumpfstärke < 0;
+            return (Trumped && ThisIsATrumpf) || (stichfarbe == farbe && Trumped == ThisIsATrumpf);
         }
     }
 }
