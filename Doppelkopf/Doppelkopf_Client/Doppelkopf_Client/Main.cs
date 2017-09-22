@@ -26,6 +26,8 @@ namespace Doppelkopf_Client
         List<Spielmodus> ListeGewaehlteSpielmodi;
         List<string> StatusList;
 
+        Karte ErsteKarteVomStich;
+
         bool AmZug = false;
 
         Spielmodus FinalerModus;
@@ -180,6 +182,7 @@ namespace Doppelkopf_Client
                 B.Visible = true;
                 i++;
             }
+            ErsteKarteVomStich = null;
             return true;
         }
 
@@ -189,6 +192,10 @@ namespace Doppelkopf_Client
             int cardID = ReadInt64(r, w);
             int SpielerID = ReadInt64(r, w);
             SpielerListe[SpielerID].KarteLegenLassen(GesamtesDeck[cardID]);
+            if (ErsteKarteVomStich == null)
+            {
+                ErsteKarteVomStich = GesamtesDeck[cardID];
+            }
             return true;
         }
 
@@ -201,10 +208,42 @@ namespace Doppelkopf_Client
         /// <returns></returns>
         private bool OnSelbstAmZug(BinaryReader r, BinaryWriter w)
         {
+            SetAlleButtons(false);
+            EnableValidButtons();
             w.Write(true);
             SetStatus("Du bist dran!");
             AmZug = true;
             return true;
+        }
+
+        private void EnableValidButtons()
+        {
+            if (ErsteKarteVomStich == null)
+            {
+                SetAlleButtons(true);
+                return;
+            }
+            bool Trumpfstich = ErsteKarteVomStich.trumpfstärke < 0;
+            bool ValidCardAvailable = false;
+            foreach (Karte K in VerbleibendeKarten)
+            {
+                if (K.IsValid(ErsteKarteVomStich.farbe, Trumpfstich))
+                {
+                    KartenButtons[VerbleibendeKarten.IndexOf(K)].Enabled = true;
+                }
+            }
+            if (!ValidCardAvailable)
+            {
+                SetAlleButtons(true);
+            }
+        }
+
+        private void SetAlleButtons(bool aktiviert)
+        {
+            foreach (Button bKarte in KartenButtons)
+            {
+                bKarte.Enabled = aktiviert;
+            }
         }
 
         private bool GetSpielmodusAndShowIt(BinaryReader r, BinaryWriter w)
@@ -493,6 +532,7 @@ namespace Doppelkopf_Client
             BinaryReader r = new BinaryReader(Server.GetStream());
             BinaryWriter w = new BinaryWriter(Server.GetStream());
             SendNumber(r, w, curCard.id);
+            SetAlleButtons(true);
         }
 
         public static Image GetImage(string path)
